@@ -3,8 +3,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$dado=mysql_query("SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
-$cliente=mysql_fetch_assoc($dado);
+$dado=mysqli_query($db, "SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
+$cliente=mysqli_fetch_assoc($dado);
  
  ?>  
 
@@ -133,17 +133,17 @@ function showFilled(Value)
     <div class="box_288">Celular<input value="<?php echo $cliente['celular'] ?>" type="text" placeholder="Digite seu celular" name="textfield7" id="celulars" /></div>
     <div class="box_288">CPF<input value="<?php echo $cliente['cpf'] ?>" type="text" placeholder="Digite seu cpf" name="textfield8" id="cpf" /></div>
     <div class="box_289">Cidade<select name="cidade" id="cidades">
-  <?php $cid=mysql_query("SELECT * FROM cidades WHERE id='".$cliente['cidade']."'"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+  <?php $cid=mysqli_query($db, "SELECT * FROM cidades WHERE id='".$cliente['cidade']."'"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
   
- <?php $cid=mysql_query("SELECT * FROM cidades WHERE id<>'".$cliente['cidade']."'"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+ <?php $cid=mysqli_query($db, "SELECT * FROM cidades WHERE id<>'".$cliente['cidade']."'"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
 </select></div>
 
 <div class="box_289">Bairro<select name="bairro" id="bairros">
-  <?php $cat=mysql_query("SELECT * FROM bairros WHERE id='".$cliente['bairro']."'"); while($categ=mysql_fetch_assoc($cat)){ ?>
+  <?php $cat=mysqli_query($db, "SELECT * FROM bairros WHERE id='".$cliente['bairro']."'"); while($categ=mysqli_fetch_assoc($cat)){ ?>
   <option value="<?php echo $categ['id'] ?>"><?php echo $categ['nome'] ?></option>
   <?php } ?>
 </select></div>

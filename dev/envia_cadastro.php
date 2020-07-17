@@ -59,15 +59,15 @@ $lat = $output->results[0]->geometry->location->lat;
 $long = $output->results[0]->geometry->location->lng;
 
 
-$query=mysql_query("INSERT INTO usuarios (latitude, longitude, id_logado, nome, email, senha, telefone, celular, cidade, bairro, endereco, complemento, numero, data) VALUES ('$lat', '$long',  '$mistura', '$nome', '$email', '".md5($senha)."', '$telefone', '$celular', '$cidade', '$bairro', '$endereco', '$complemento', '$numero', '".date('d/m/Y')."')");
+$query=mysqli_query($db, "INSERT INTO usuarios (latitude, longitude, id_logado, nome, email, senha, telefone, celular, cidade, bairro, endereco, complemento, numero, data) VALUES ('$lat', '$long',  '$mistura', '$nome', '$email', '".md5($senha)."', '$telefone', '$celular', '$cidade', '$bairro', '$endereco', '$complemento', '$numero', '".date('d/m/Y')."')");
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE email='$email' and senha='".md5($senha)."'");
-$usuario=mysql_fetch_assoc($usu);
+$usu=mysqli_query($db, "SELECT * FROM usuarios WHERE email='$email' and senha='".md5($senha)."'");
+$usuario=mysqli_fetch_assoc($usu);
 
-$pedi=mysql_query("SELECT * FROM store WHERE sessao='".session_id()."'");
-while($pedidos=mysql_fetch_assoc($pedi)){
+$pedi=mysqli_query($db, "SELECT * FROM store WHERE sessao='".session_id()."'");
+while($pedidos=mysqli_fetch_assoc($pedi)){
 
-$update=mysql_query("UPDATE store SET sessao='".$usuario['id_logado']."' WHERE id='".$pedidos['id']."'");
+$update=mysqli_query($db, "UPDATE store SET sessao='".$usuario['id_logado']."' WHERE id='".$pedidos['id']."'");
 
 }
 
@@ -75,8 +75,8 @@ $_SESSION['id_usu_pizza']    = $usuario['id_logado'];
 $_SESSION['id_usu_ario']     = $usuario['id_u'];
 $_SESSION['nome_usu_pizza']  = $usuario['nome'];
 
-$prod=mysql_query("SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
-$num_prod=mysql_num_rows($prod);
+$prod=mysqli_query($db, "SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$num_prod=mysqli_num_rows($prod);
 
 if($num_prod>0){
 echo "<script>window.location='/finalizar'</script>";

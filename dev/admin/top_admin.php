@@ -1,6 +1,6 @@
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db, "SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 ?>
 <div class="box_4"><div class="box_5">
     <div class="box_41"><div class="box_41a"><img src="/admin/logo/<?php echo $config['logomarca']; ?>" /></div></div>

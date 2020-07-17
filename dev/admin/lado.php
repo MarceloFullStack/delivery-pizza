@@ -47,8 +47,8 @@ function showFilled(Value)
       <div class="box_48">
         <div class="box_46">
        <?php
-       $ped_num=mysql_query("SELECT * FROM store_finalizado group by id_pedido");
-       $pedido_numero=mysql_num_rows($ped_num);
+       $ped_num=mysqli_query($db, "SELECT * FROM store_finalizado group by id_pedido");
+       $pedido_numero=mysqli_num_rows($ped_num);
 	   echo $pedido_numero;
 	   ?>
        </div>
@@ -58,8 +58,8 @@ function showFilled(Value)
       <div class="box_48">
         <div class="box_46">
        <?php
-       $cli_num=mysql_query("SELECT * FROM usuarios");
-       $cli_numero=mysql_num_rows($cli_num);
+       $cli_num=mysqli_query($db, "SELECT * FROM usuarios");
+       $cli_numero=mysqli_num_rows($cli_num);
 	   echo  $cli_numero;
 	   ?>
         </div>

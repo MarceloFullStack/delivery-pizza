@@ -11,7 +11,7 @@ $ingrediente = $_POST['ingrediente'];
 $nome        = $_POST['nome'];
 $velor       = $_POST['valor'];
 
-$result=mysql_query("INSERT INTO opcionais (id_sabor, id_ingrediente, nome, valor, sessao_usuario) VALUES ('$sabor', '$ingrediente', '$nome', '$velor', '$sessao')");
+$result=mysqli_query($db, "INSERT INTO opcionais (id_sabor, id_ingrediente, nome, valor, sessao_usuario) VALUES ('$sabor', '$ingrediente', '$nome', '$velor', '$sessao')");
 
 
 ?>

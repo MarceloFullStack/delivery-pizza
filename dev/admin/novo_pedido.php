@@ -12,16 +12,16 @@ include('bd.php');
 include_once 'time_stamp.php';
 ?>
 <?php
-  $chat = mysql_query("SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido order by id desc");
-  $chats=mysql_fetch_assoc($chat);
-  $num=mysql_num_rows($chat);
+  $chat = mysqli_query($db, "SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido order by id desc");
+  $chats=mysqli_fetch_assoc($chat);
+  $num=mysqli_num_rows($chat);
   if($num>0){
   
-  $cli=mysql_query("SELECT * FROM usuarios WHERE id_u='".$chats['id_estrangeiro']."'");
-  $cliente=mysql_fetch_assoc($cli);
+  $cli=mysqli_query($db, "SELECT * FROM usuarios WHERE id_u='".$chats['id_estrangeiro']."'");
+  $cliente=mysqli_fetch_assoc($cli);
 
-  $somando = mysql_query("SELECT valor, SUM(valor) AS soma FROM store_finalizado WHERE id_pedido='".$chats['id_pedido']."'");
-  $soma=mysql_fetch_assoc($somando);
+  $somando = mysqli_query($db, "SELECT valor, SUM(valor) AS soma FROM store_finalizado WHERE id_pedido='".$chats['id_pedido']."'");
+  $soma=mysqli_fetch_assoc($somando);
 ?>
 
 <a href="pedido.php?id=<?php echo $chats['id_pedido'] ?>">    

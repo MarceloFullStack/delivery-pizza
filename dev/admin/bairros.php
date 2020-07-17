@@ -3,8 +3,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$ba=mysql_query("SELECT * FROM cidades WHERE id='".$_GET['id']."'");
-$bairro=mysql_fetch_assoc($ba);
+$ba=mysqli_query($db, "SELECT * FROM cidades WHERE id='".$_GET['id']."'");
+$bairro=mysqli_fetch_assoc($ba);
 ?>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -171,8 +171,8 @@ $("#enviar").click(function() {
           <div class="box_15">
             <div class="box_22">
         <?php
-		$cat=mysql_query("SELECT * FROM bairros WHERE id_estrangeiro='".$_GET['id']."'");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db, "SELECT * FROM bairros WHERE id_estrangeiro='".$_GET['id']."'");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
         <div class="box_195">
               <div class="box_101" id="bar<?php echo $categ['id'] ?>">

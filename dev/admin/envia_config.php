@@ -10,7 +10,6 @@ session_start();
 <body>
 <?php
 include('bd.php');
-
 $nome          = $_POST['nome'];
 $logo          = $_POST['logo'];
 $hora_de       = $_POST['hora_de'];

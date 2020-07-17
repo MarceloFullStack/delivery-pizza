@@ -25,8 +25,8 @@ $numero       = $_POST['numero'];
 $bairro       = $_POST['bairro'];
 $complemento  = $_POST['complemento'];
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE email='$email'");
-$num=mysql_num_rows($usu);
+$usu=mysqli_query($db, "SELECT * FROM usuarios WHERE email='$email'");
+$num=mysqli_num_rows($usu);
 
 if($nome==''){
 echo "<div class='box145'>Favor inserir <strong>seu nome</strong></div>";
@@ -64,7 +64,7 @@ $lat = $output->results[0]->geometry->location->lat;
 $long = $output->results[0]->geometry->location->lng;
 
 
-$query=mysql_query("INSERT INTO usuarios (latitude, longitude, id_logado, nome, email, senha, telefone, celular, cidade, bairro, endereco, complemento, numero, data, cpf) VALUES ('$lat', '$long',  '$mistura', '$nome', '$email', '".md5($senha)."', '$telefone', '$celular', '$cidade', '$bairro', '$endereco', '$complemento', '$numero', '".date('d/m/Y')."', '$cpf')");
+$query=mysqli_query($db, "INSERT INTO usuarios (latitude, longitude, id_logado, nome, email, senha, telefone, celular, cidade, bairro, endereco, complemento, numero, data, cpf) VALUES ('$lat', '$long',  '$mistura', '$nome', '$email', '".md5($senha)."', '$telefone', '$celular', '$cidade', '$bairro', '$endereco', '$complemento', '$numero', '".date('d/m/Y')."', '$cpf')");
 
 
 echo "<script>window.location='clientes.php'</script>";

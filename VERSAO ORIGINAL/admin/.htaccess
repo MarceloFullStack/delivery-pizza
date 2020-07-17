@@ -1,0 +1,8 @@
+RewriteEngine On
+Options -Indexes
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule  ^(.*) index.php?url=$1 [QSA]
+
+RewriteCond %{HTTP_HOST} ^chgourmet.com.br$
+RewriteRule ^/?$ "http\:\/\/www\.chgourmet\.com\.br\/" [R=301,L]

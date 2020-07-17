@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selectator Plugin</title>
+	<link rel="stylesheet" href="fm.selectator.jquery.css"/>
+	<script src="jquery-1.11.0.min.js"></script>
+	<script src="fm.selectator.jquery.js"></script>
+	<script>
+		$(function () {
+			$('#activate_selectator1').click(function () {
+				if ($('#select1').data('selectator') === undefined) {
+					$('#select1').selectator({
+						useDimmer: false,
+						labels: {
+							search: 'Buscar...'
+						}
+					});
+					$('#activate_selectator1').val('destroy selectator');
+				} else {
+					$('#select1').selectator('destroy');
+					$('#activate_selectator1').val('activate selectator');
+				}
+			});
+			$('#activate_selectator1').trigger('click');
+
+		});
+	</script>
+</head>
+<body>
+	
+		<select id="select1" name="select1" style="width:200px;">
+			<option value="">&nbsp;</option>
+			<option value="1" data-subtitle="Et" data-left="<img src='images/ingi.png'>" >One</option>
+			<option value="2" data-subtitle="To" data-left="<img src='images/runa.png'>" data-right="2">Two</option>
+			<option value="3" data-subtitle="Tre" data-left="<img src='images/jogvan.png'>" data-right="3">Three</option>
+			<option value="4" data-left="<img src='images/noimage.png'>" data-right="4">Four</option>
+			<option value="5" data-left="<img src='images/noimage.png'>" data-right="5">Five</option>
+		</select>
+		<input value="activate selectator" id="activate_selectator1" style="display:none" type="button">
+		
+
+</body>
+</html>

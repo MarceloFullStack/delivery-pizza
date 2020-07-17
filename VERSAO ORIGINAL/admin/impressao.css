@@ -1,0 +1,118 @@
+@page  
+{ 
+    size: auto;
+    margin: 2mm 2mm 2mm 2mm;  
+	font-family: monospace;
+	font-size: 9pt;
+	width: 58mm;
+} 
+
+
+.contents
+{
+    padding: 5px;
+    width: 58mm;
+	font-family: monospace;
+    font-size: 9pt;
+	float:left;
+}
+
+
+
+
+
+
+     #txt_impressao{
+	width: 58mm;
+	font-family: monospace;
+            font-size: 9pt;
+	line-height: initial;
+	margin:0;
+	padding:0;
+	
+        }
+        #txt_impressao, #txt_impressao *{
+	margin:0;
+	padding:0;
+	list-style:none;
+	vertical-align:baseline;
+        }
+        
+        .badge.bdg_nuns{
+            background: #47a447;
+            color: #FFF;
+            font-size: 10px;
+            font-weight: normal;
+            height: 16px;
+            padding: 3px 5px 3px 5px;
+        }
+
+
+        .divblock{
+            display: block !important;
+        }
+        .alg_right{
+            text-align: right;
+        }
+        span.nomepizzaria {
+            text-align: center;
+            font-weight: 600 !important;
+            font-family: sans-serif;
+            font-size: 16px;
+            display: block;
+        }
+        span.fonepizzaria {
+            text-align: center;
+            font-weight: 600 !important;
+            font-family: sans-serif;
+            font-size: 16px;
+            display: block;
+        }
+        hr.separacao{
+            border-top: 1pt solid #000 !important;
+            border-style: dashed !important;
+            margin: 14px 0 !important;
+        }
+        
+        span.nomesaborpizza {
+            width: 100%;
+            float: right;
+            padding-left: 6% !important;
+        }
+        span.totalconf {
+            font-weight: 800 !important;
+            font-size: 13pt;
+        }
+        table.tableimprimir{
+            width: 100%;
+            margin-top: 10px !important;
+        }
+        span.trTitles{
+            font-size: 12pt !important;
+        }
+        tr.septable{
+            border-bottom: 1pt solid #9C9C9C !important;
+        }
+        hr.assinatura_ {
+            width: 70%;
+            border-top: 1pt solid #000 !important;
+            display: block;
+            margin-left: 15% !important;
+            margin-top: 40px !important;
+        }
+        span.spanassinatura{
+            display: block;
+            text-align: center;
+        }
+            
+        
+        tr.colorsuccess{
+            color: #2059C3;
+        }
+        tr.colorwarning{
+            color: #D2322D;
+        }
+        
+        tr.hoverlinhatb:hover{
+            background: #d4d4d4;
+        }

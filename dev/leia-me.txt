@@ -1,0 +1,7 @@
+Importe a base de dados de banco_dados.sql
+Altere o arquivo bd.php tanto no diretorio principal quanto em admin
+Altere o arquivo .taccess caso queira fazer um redirecionamento de meusite.com.br para www.meusite.com.br
+
+Para acessar o admin basta colocar /admin
+usuario: admin@admin.com.br
+senha: 123

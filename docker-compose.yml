@@ -1,0 +1,38 @@
+version: '3'
+ 
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+    - 8181:80
+    restart: always
+  php-5.4:
+      build: .
+      links:
+        - mysql
+      ports:
+        - 8080:80
+      volumes:
+        - ./dev/:/var/www/html
+  
+  mysql:
+      image: mariadb:latest
+      container_name: mysql
+      environment:
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+        MYSQL_DATABASE: delivery
+        MYSQL_ROOT_PASSWORD: root
+      ports:
+        - 3307:3306
+      restart: always
+      volumes: 
+        - db_data

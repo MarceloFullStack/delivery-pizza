@@ -1,9 +1,12 @@
+<?php 
+date_default_timezone_set( "America/Sao_Paulo" );
+?>
 <?php
 $hostname = "127.0.0.1:3307";                 
 $user = "root";                            
 $pass = "root";                             
 $dbase = "delivery";                          
-$db = mysqlI_connect($hostname,$user,$pass, $dbase);
+$db = mysqli_connect($hostname,$user,$pass, $dbase);
 
 ?>
 
@@ -13,14 +16,13 @@ function runSQL($rsql) {
 	$username = "root";
 	$password = "root";
 	$dbname   = "delivery";
-	$connect = mysqlI_connect($hostname,$username,$password, $dbname) or die ("Error: could not connect to database");
+	$connect = mysqli_connect($hostname,$username,$password, $dbname) or die ("Error: could not connect to database");
 	$result = mysqli_query($connect, $rsql) or die ('test'); 
 	return $result;
 	mysqli_close($connect);
 }
 ?>
 <?php
-
 $cadastr=mysqli_query($db, "SELECT * FROM admin");
 $cadastro=mysqli_fetch_assoc($cadastr);
 

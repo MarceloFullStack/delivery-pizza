@@ -1,0 +1,14 @@
+1. Criar um Banco de Dados na Hospedagem e Alterar o PHP para 5.4
+2. Executar o instalador na url em que subiu os arquivos (suaurl.com.br/instalador)
+3. Configurar com o seu banco de dados
+4. Pronto agora basta configurar da forma que mais lhe agradar!
+
+
+Tutorial Notificacoes Push
+
+
+##### LOGIN E SENHA #######
+Login: admin@admin.com.br
+Senha: demo123
+
+OBS: Para alterar o email do administrador basta acessar o banco de dados pelo PhpMyAdmin e alterar a tabela (admin) do banco de dados em que foi instalado o sistema

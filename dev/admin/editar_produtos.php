@@ -4,8 +4,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$prod=mysql_query("SELECT * FROM produtos WHERE id='".$_GET['id']."'");
-$produto=mysql_fetch_assoc($prod);
+$prod=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$_GET['id']."'");
+$produto=mysqli_fetch_assoc($prod);
 
 ?>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -249,7 +249,7 @@ $("#enviar").click(function() {
           <select name="categoria" id="categoria">
                   <option value="<?php echo $produto['categoria'] ?>"><?php echo $produto['categoria'] ?></option>
                   
-                  <?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['url'] ?>"><?php echo $categoria['nome'] ?></option>
                   <?php } ?>
   </select>
@@ -312,8 +312,8 @@ $('#tama').on('change', function() {
          </div>
          
          <?php
-		 $cat=mysql_query("SELECT * FROM categorias WHERE url='".$produto['categoria']."'");
-		 $categ=mysql_fetch_assoc($cat);
+		 $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url='".$produto['categoria']."'");
+		 $categ=mysqli_fetch_assoc($cat);
 		 if($categ['montar']=='1'){
 		 ?>
          <div class="box_199">
@@ -333,8 +333,8 @@ $idl = $idaluno[$i];
 <?php } ?>
 
 <?php
-$se=mysql_query("SELECT * FROM ingredientes");
-while($select=mysql_fetch_assoc($se)){
+$se=mysqli_query($db,"SELECT * FROM ingredientes");
+while($select=mysqli_fetch_assoc($se)){
 ?>
                     <option value="<?php echo $select['nome']; ?>"><?php echo $select['nome']; ?></option>
                     <?php } ?>
@@ -403,8 +403,8 @@ while($select=mysql_fetch_assoc($se)){
 <?php if($produto['tamanhos'] == '1'){ ?>
 <div class="box_199" id="mostra_tamanho" <?php echo $style ?>>  
          <?php
-		 $ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$produto['id']."'");
-		 while($tam=mysql_fetch_assoc($ta)){
+		 $ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$produto['id']."'");
+		 while($tam=mysqli_fetch_assoc($ta)){
 		 ?>  
           <div class="box_199"  <?php echo $style ?>>
            <div class="box_202">

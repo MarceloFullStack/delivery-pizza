@@ -16,7 +16,7 @@ $valor                = $_POST['valor'];
 $maximo_adicional     = $_POST['maximo_adicional'];
 $permitir_adicional   = $_POST['permitir_adicional'];
 
-$logface  = mysql_query("UPDATE ingredientes SET nome='$categoria', valor='$valor', maximo_adicional='$maximo_adicional', permitir_adicional='$permitir_adicional' WHERE id='".$_POST['id']."'");
+$logface  = mysqli_query($db,"UPDATE ingredientes SET nome='$categoria', valor='$valor', maximo_adicional='$maximo_adicional', permitir_adicional='$permitir_adicional' WHERE id='".$_POST['id']."'");
 
 	 
 ?>

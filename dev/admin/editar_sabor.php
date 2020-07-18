@@ -3,8 +3,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$sabo=mysql_query("SELECT * FROM sabores WHERE id='".$_GET['id']."'");
-$sabor=mysql_fetch_assoc($sabo);
+$sabo=mysqli_query($db,"SELECT * FROM sabores WHERE id='".$_GET['id']."'");
+$sabor=mysqli_fetch_assoc($sabo);
 ?>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

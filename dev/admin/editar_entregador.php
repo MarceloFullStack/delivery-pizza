@@ -4,8 +4,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$entre=mysql_query("SELECT * FROM entregador WHERE id='".$_GET['id']."'");
-$entregador=mysql_fetch_assoc($entre);
+$entre=mysqli_query($db,"SELECT * FROM entregador WHERE id='".$_GET['id']."'");
+$entregador=mysqli_fetch_assoc($entre);
 ?>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

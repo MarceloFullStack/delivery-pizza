@@ -14,7 +14,7 @@ include('bd.php');
 $categoria     = $_POST['categoria'];
 $extra         = $_POST['extra'];
 
-	  $logface  = mysql_query("INSERT INTO sabores (sabor, extra) VALUES ('$categoria', '$extra')");
+	  $logface  = mysqli_query($db,"INSERT INTO sabores (sabor, extra) VALUES ('$categoria', '$extra')");
 
 ?>
 </body>

@@ -162,7 +162,7 @@ $('#tama').on('change', function() {
           <select name="sabor" id="sabor">
                   <option value="">Escolha um Sabor</option>
                   
-                  <?php $cat=mysql_query("SELECT * FROM sabores"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM sabores"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['sabor'] ?>"><?php echo $categoria['sabor'] ?></option>
                   <?php } ?>
        
@@ -190,7 +190,7 @@ $('#tama').on('change', function() {
              <div class="box_201">Tamanho</div>
              <select name="tamanho" id="tamanho">
                   <option value="">Escolha um Tamanho</option>
-                  <?php $cat=mysql_query("SELECT * FROM tamanho"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM tamanho"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['tamanho'] ?>"><?php echo $categoria['tamanho'] ?></option>
                   <?php } ?>
               </select>
@@ -208,8 +208,8 @@ $('#tama').on('change', function() {
              <div class="box_201">Ingredientes</div>
             <select style="" name="ingredientes" class="chosen" multiple id="ingredientes" tabindex="11" data-placeholder="Selecione os ingredientes">
                   <?php
-$se=mysql_query("SELECT * FROM ingredientes order by nome");
-while($select=mysql_fetch_assoc($se)){
+$se=mysqli_query($db,"SELECT * FROM ingredientes order by nome");
+while($select=mysqli_fetch_assoc($se)){
 ?>
                   <option value="<?php echo $select['nome']; ?>"><?php echo $select['nome']; ?></option>
                   <?php } ?>
@@ -224,8 +224,8 @@ while($select=mysql_fetch_assoc($se)){
              <div class="box_201">Ingredientes Opcionais</div>
              <select style="" name="ingredientes" class="chosen2" multiple id="ingredientes_adicionais" tabindex="11" data-placeholder="Selecione os ingredientes">
                   <?php
-$se=mysql_query("SELECT * FROM ingredientes order by nome");
-while($select=mysql_fetch_assoc($se)){
+$se=mysqli_query($db,"SELECT * FROM ingredientes order by nome");
+while($select=mysqli_fetch_assoc($se)){
 ?>
                   <option value="<?php echo $select['nome']; ?>"><?php echo $select['nome']; ?></option>
                   <?php } ?>

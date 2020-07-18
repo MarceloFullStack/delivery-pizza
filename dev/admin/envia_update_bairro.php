@@ -16,7 +16,7 @@ $taxa     = $_POST['taxa'];
 $tempo    = $_POST['tempo'];
 $id       = $_POST['id'];
 
-$logface  = mysql_query("UPDATE bairros SET tempo='$tempo', nome='$nome', taxa='$taxa' WHERE id='$id'");	 
+$logface  = mysqli_query($db,"UPDATE bairros SET tempo='$tempo', nome='$nome', taxa='$taxa' WHERE id='$id'");	 
 
 ?>
 </body>

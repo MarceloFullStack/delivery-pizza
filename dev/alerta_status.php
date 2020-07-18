@@ -11,8 +11,8 @@ function sendMsg($msg) {
   
   include('bd.php');
  
-  $chat  = mysql_query("SELECT * FROM store_finalizado WHERE id='".$_GET['id']."'");
-  $chats = mysql_fetch_assoc($chat);
+  $chat  = mysqli_query($db,"SELECT * FROM store_finalizado WHERE id='".$_GET['id']."'");
+  $chats = mysqli_fetch_assoc($chat);
   $html  = $chats['status'];
 
 sendMsg($html);

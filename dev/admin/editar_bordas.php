@@ -3,8 +3,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-		$cat=mysql_query("SELECT * FROM borda WHERE id='".$_GET['id']."'");
-		$categ=mysql_fetch_assoc($cat);
+		$cat=mysqli_query($db,"SELECT * FROM borda WHERE id='".$_GET['id']."'");
+		$categ=mysqli_fetch_assoc($cat);
 
 ?>  
 

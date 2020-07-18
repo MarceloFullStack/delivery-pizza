@@ -128,8 +128,8 @@ $("#enviar").click(function() {
       <div class="box_15">
 
 <?php
-$cat=mysql_query("SELECT * FROM categorias WHERE id='".$_GET['id']."'");
-$categorias=mysql_fetch_assoc($cat);
+$cat=mysqli_query($db,"SELECT * FROM categorias WHERE id='".$_GET['id']."'");
+$categorias=mysqli_fetch_assoc($cat);
 ?>      
       <div class="box_285">
         <div class="box233"><span class="style1">Apenas escolha sim para a opção ativar montar caso o produto precise do recurso de remover ingredientes, exemplo: lanches, porções. Isso não se aplica a bebidas por exemplo</span></div>

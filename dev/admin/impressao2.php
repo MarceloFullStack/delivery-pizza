@@ -15,16 +15,16 @@
    <div class="name">
             
             <?php
-			$ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$pedido['id_pedido']."'");
-			while($pedi=mysql_fetch_assoc($ped)){
+			$ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$pedido['id_pedido']."'");
+			while($pedi=mysqli_fetch_assoc($ped)){
             
 			if($pedi['pizza']<>'sim'){
-                    $bebidas=mysql_query("SELECT * FROM produtos WHERE id='".$pedi['produto_id']."'");
-					$bebida=mysql_fetch_assoc($bebidas);
+                    $bebidas=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$pedi['produto_id']."'");
+					$bebida=mysqli_fetch_assoc($bebidas);
 					
 					if($bebida['tamanhos'] == '1'){
-					$ta=mysql_query("SELECT * FROM tamanhos WHERE id='".$pedi['id_tamanho']."'");
-					$tamanho=mysql_fetch_assoc($ta);
+					$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id='".$pedi['id_tamanho']."'");
+					$tamanho=mysqli_fetch_assoc($ta);
 					$nome = ''.$bebida['nome'].' - '.$tamanho['tamanho'].'';
 					}else{
 					$nome = $bebida['nome'];

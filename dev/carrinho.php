@@ -13,20 +13,20 @@ $char = $_SESSION['id_usu_pizza'];
   <div class="box125a">
       
 <?php
-$item=mysql_query("SELECT * FROM store WHERE sessao='".$char."' and status='0'");
-$quantidade=mysql_num_rows($item);
+$item=mysqli_query($db,"SELECT * FROM store WHERE sessao='".$char."' and status='0'");
+$quantidade=mysqli_num_rows($item);
 ?>      
 <?php if($quantidade>0){ ?>
  <div class="box143">
   <ul id="carrinho_p">
-<?php while($itens=mysql_fetch_assoc($item)){ ?>
+<?php while($itens=mysqli_fetch_assoc($item)){ ?>
 <?php
 if($itens['pizza']<>'sim'){
-$bebidas=mysql_query("SELECT * FROM produtos WHERE id='".$itens['produto_id']."'"); $bebida=mysql_fetch_assoc($bebidas);
+$bebidas=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$itens['produto_id']."'"); $bebida=mysqli_fetch_assoc($bebidas);
 $img  = '<img src="/fotos_produtos/'.$bebida['foto'].'" width="25" height="25"/>';
 if($bebida['tamanhos'] == '1'){
-$ta=mysql_query("SELECT * FROM tamanhos WHERE id='".$itens['id_tamanho']."'");
-$tamanho=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id='".$itens['id_tamanho']."'");
+$tamanho=mysqli_fetch_assoc($ta);
 $nome = ''.$bebida['nome'].' - '.$tamanho['tamanho'].'';
 }else{
 $nome = $bebida['nome'];

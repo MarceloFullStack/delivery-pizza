@@ -6,13 +6,13 @@ header("access-control-allow-origin: https://pagseguro.uol.com.br");
 
 <?php
 
-$query = mysql_query("SELECT * FROM config");
-$cresult=mysql_fetch_assoc($query);
+$query = mysqli_query($db,"SELECT * FROM config");
+$cresult=mysqli_fetch_assoc($query);
 	 
 if($_POST['notificationCode']){
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
-    //Todo resto do código iremos inserir aqui.
+    //Todo resto do cï¿½digo iremos inserir aqui.
 
     $email = $cresult['pagseguro'];
     $token = $cresult['tokem'];
@@ -26,7 +26,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     curl_close($curl);
 
     if($transaction == 'Unauthorized'){
-        //Insira seu código avisando que o sistema está com problemas, sugiro enviar um e-mail avisando para alguém fazer a manutenção
+        //Insira seu cï¿½digo avisando que o sistema estï¿½ com problemas, sugiro enviar um e-mail avisando para alguï¿½m fazer a manutenï¿½ï¿½o
 
         exit;//Mantenha essa linha
     }
@@ -41,11 +41,11 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     if($transactionStatus == 1){
         $transactionStatus = 'Aguardando pagamento';
     } elseif($transactionStatus == 2){
-        $transactionStatus = 'Em análise';
+        $transactionStatus = 'Em anï¿½lise';
     } elseif($transactionStatus == 3){ // :)
         $transactionStatus = 'Pago';
     } elseif($transactionStatus == 4){ // :D
-        $transactionStatus = 'Disponível';
+        $transactionStatus = 'Disponï¿½vel';
     } elseif($transactionStatus == 5){
         $transactionStatus = 'Em disputa';
     } elseif($transactionStatus == 6){
@@ -55,7 +55,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     }
 }
 
-$update=mysql_query("UPDATE store_finalizado SET status_pagamento='".$transactionStatus."' WHERE pagseguro_code='".$transactionCode."'");
+$update=mysqli_query($db,"UPDATE store_finalizado SET status_pagamento='".$transactionStatus."' WHERE pagseguro_code='".$transactionCode."'");
 
 
 

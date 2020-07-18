@@ -1,8 +1,8 @@
 <?php
 
-$conf=mysql_query("SELECT * FROM config");
+$conf=mysqli_query($db,"SELECT * FROM config");
 
-$config=mysql_fetch_assoc($conf);
+$config=mysqli_fetch_assoc($conf);
 
 ?>
 

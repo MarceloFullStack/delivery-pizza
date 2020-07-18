@@ -56,7 +56,7 @@ $lat = $output->results[0]->geometry->location->lat;
 $long = $output->results[0]->geometry->location->lng;
 
 
-$query=mysql_query("UPDATE usuarios SET latitude='$lat', longitude='$long', nome='$nome', email='$email', telefone='$telefone', celular='$celular', cidade='$cidade', bairro='$bairro', endereco='$endereco', complemento='$complemento', numero='$numero', cpf='$cpf' WHERE id='$id'");
+$query=mysqli_query($db,"UPDATE usuarios SET latitude='$lat', longitude='$long', nome='$nome', email='$email', telefone='$telefone', celular='$celular', cidade='$cidade', bairro='$bairro', endereco='$endereco', complemento='$complemento', numero='$numero', cpf='$cpf' WHERE id='$id'");
 
 
 echo "<script>window.location='clientes.php'</script>";

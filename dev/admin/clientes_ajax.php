@@ -5,7 +5,7 @@ error_reporting(0);
 function countRec($fname,$tname,$where) {
 $sql = "SELECT count($fname) FROM $tname $where";
 $result = runSQL($sql);
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result)) {
 return $row[0];
 }
 }
@@ -52,7 +52,7 @@ $json .= "page: $page,\n";
 $json .= "total: $total,\n";
 $json .= "rows: [";
 $rc = false;
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysqli_fetch_array($result)) {
 
 if ($rc) $json .= ",";
 $json .= "\n{";

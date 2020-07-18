@@ -13,7 +13,7 @@ include('bd.php');
 
 $chamada3      = $_POST['chamada3'];
 
-$logface  = mysql_query("UPDATE config SET chamada3='$chamada3'");
+$logface  = mysqli_query($db,"UPDATE config SET chamada3='$chamada3'");
 
 ?>
 </body>

@@ -10,7 +10,7 @@ $ingrediente = $_POST['ingrediente'];
 $nome        = $_POST['nome'];
 $velor       = $_POST['valor'];
 
-$result=mysql_query("DELETE FROM opcionais WHERE id_sabor='$sabor' and id_ingrediente='$ingrediente' and sessao_usuario='$sessao'");
+$result=mysqli_query($db,"DELETE FROM opcionais WHERE id_sabor='$sabor' and id_ingrediente='$ingrediente' and sessao_usuario='$sessao'");
 
 
 ?>

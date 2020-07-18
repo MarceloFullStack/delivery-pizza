@@ -684,7 +684,7 @@ $('#valor_pizza').text("0.00");
 	  
 		  if(ingredi1 =='' || ingredi2 =='' || ingredi3 ==''){
 	     $.alert({
-			title: 'Sabores faltando',
+			title: 'Sabores faltando',valortotal,
 			content: 'Por favor escolha os 3 sabores da pizza.',
 			confirmButton: 'Ok',
 			confirmButtonClass: 'btn-info',

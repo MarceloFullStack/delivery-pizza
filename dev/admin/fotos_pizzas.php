@@ -162,8 +162,8 @@ $("#enviar").click(function() {
           <div class="box_15">
             <div class="box_22">
         <?php
-		$cat=mysql_query("SELECT * FROM imagens_pizzas WHERE categoria='pizzas'");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM imagens_pizzas WHERE categoria='pizzas'");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
            <div class="box_196" id="bar<?php echo $categ['id'] ?>">
               <div class="box_185"><a class="delete_update" id="<?php echo $categ['id'] ?>"><div class="box_197"></div></a><img src="../fotos_produtos/<?php echo $categ['imagem'] ?>" width="120" height="120" /></div></div>

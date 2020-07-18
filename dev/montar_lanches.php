@@ -5,8 +5,8 @@ include('bd.php');
 $url= isset($_GET['url']) ? $_GET['url'] : '';
 $explode = explode('/', $url);
 
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 $classe  = 'addcarrinho';
 $classe2 = 'add-lanche';
@@ -21,13 +21,13 @@ $pedido = session_id();
 $pedido = $_SESSION['id_usu_pizza'];
 }
 
-$sesa_p=mysql_query("SELECT * FROM pedidos WHERE sessao_estrangeiro='$pedido'");
-$sessao_p=mysql_fetch_assoc($sesa_p);
+$sesa_p=mysqli_query($db,"SELECT * FROM pedidos WHERE sessao_estrangeiro='$pedido'");
+$sessao_p=mysqli_fetch_assoc($sesa_p);
 
-$num=mysql_num_rows($sesa_p);
+$num=mysqli_num_rows($sesa_p);
 
-$ses_p=mysql_query("SELECT * FROM produtos WHERE id='".$sessao_p['produto']."'");
-$sessao_produto=mysql_fetch_assoc($ses_p);
+$ses_p=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$sessao_p['produto']."'");
+$sessao_produto=mysqli_fetch_assoc($ses_p);
 
 
 ?>
@@ -147,8 +147,8 @@ if($num>0){
 		if($sessao_produto['tamanhos']<>'1'){
 		$valor = $sessao_produto['valor'];
 		}else{
-		$va=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."' order by id asc");
-		$val=mysql_fetch_assoc($va);
+		$va=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."' order by id asc");
+		$val=mysqli_fetch_assoc($va);
 		$valor = $val['valor'];
 		}
 		?>
@@ -187,7 +187,7 @@ if($num>0){
        <div id="escolher" data-novotamanho=""> <label>Tamanho</label><small>Escolha um tamanho</small></div>
         <div class="box">
           <ul>
-<?php $ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."'"); while($tamanho=mysql_fetch_assoc($ta)){ ?>          
+<?php $ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."'"); while($tamanho=mysqli_fetch_assoc($ta)){ ?>          
 <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-novovalor="<?php echo $tamanho['valor'] ?>"  data-iddotamanho="<?php echo $tamanho['id'] ?>">
 <img src="/arquivos/icon_tamanho.jpg" /><label>Tamanho</label><small><?php echo $tamanho['tamanho'] ?> R$ <?php echo $tamanho['valor'] ?></small>
 </li>
@@ -230,20 +230,20 @@ if($num>0){
 
 
 
-<?php $cat=mysql_query("SELECT * FROM categorias WHERE url='".$explode[1]."'"); while($categ=mysql_fetch_assoc($cat)){ ?>
+<?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url='".$explode[1]."'"); while($categ=mysqli_fetch_assoc($cat)){ ?>
 <div class="box32"><div class="box33"><?php echo $categ['nome'] ?></div></div>
     
 <div class="box77"><ul>
 
-<?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='".$categ['url']."'"); while($produtos=mysql_fetch_assoc($produto)){?>
+<?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='".$categ['url']."'"); while($produtos=mysqli_fetch_assoc($produto)){?>
 
 <?php if($categ['montar']=='1'){ ?>
 
 <!-- Pegando o valor -->
 <?php
 if($produtos['tamanhos']=='1'){
-$ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$produtos['id']."'");
-$tam=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$produtos['id']."'");
+$tam=mysqli_fetch_assoc($ta);
 $valor = $tam['valor'];
 }else{
 $valor = $produtos['valor'];
@@ -299,7 +299,7 @@ $valor = $produtos['valor'];
     </div>
     <div class="box77"><ul>
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <li class="<?php echo $classe ?> add-to-cart" id="addcarrinho-<?php echo $produtos['id'] ?>" data-nome="<?php echo $produtos['nome'] ?>" data-valor="<?php echo $produtos['valor'] ?>" data-id="<?php echo $produtos['id'] ?>" data-foto="<?php echo $produtos['foto'] ?>">
 <div class="box170">
       <div class="box29">

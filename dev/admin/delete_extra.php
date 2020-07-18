@@ -4,7 +4,7 @@ if($_POST['id']){
 
 $id=$_POST['id'];
 
-$query = mysql_query("DELETE FROM extras where id='$id'");
+$query = mysqli_query($db,"DELETE FROM extras where id='$id'");
 
 }
 ?>

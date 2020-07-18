@@ -2,8 +2,8 @@
 include('bd.php');
 ?>
 <?php
-$pedido=mysql_query("SELECT * FROM produtos WHERE id='".$_POST['id']."'");
-$pedidos=mysql_fetch_assoc($pedido);
+$pedido=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$_POST['id']."'");
+$pedidos=mysqli_fetch_assoc($pedido);
 if($pedidos['tamanhos']=='1'){
 ?>
 
@@ -13,7 +13,7 @@ if($pedidos['tamanhos']=='1'){
        <div id="escolher" data-novotamanho=""> <label>Tamanho</label><small>Escolha um tamanho</small></div>
         <div class="box">
           <ul>
-<?php $ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$pedidos['id']."'"); while($tamanho=mysql_fetch_assoc($ta)){ ?>          
+<?php $ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$pedidos['id']."'"); while($tamanho=mysqli_fetch_assoc($ta)){ ?>          
 <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-novovalor="<?php echo $tamanho['valor'] ?>"  data-iddotamanho="<?php echo $tamanho['id'] ?>">
 <img src="/arquivos/icon_tamanho.jpg" /><label>Tamanho</label><small><?php echo $tamanho['tamanho'] ?> R$ <?php echo $tamanho['valor'] ?></small>
 </li>

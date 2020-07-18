@@ -14,7 +14,7 @@ include('bd.php');
 $categoria  = $_POST['categoria'];
 $estado     = $_POST['estado'];
 
-$logface  = mysql_query("INSERT INTO cidades (cidade, estado) VALUES ('$categoria', '$estado')");	 
+$logface  = mysqli_query($db,"INSERT INTO cidades (cidade, estado) VALUES ('$categoria', '$estado')");	 
 
 ?>
 </body>

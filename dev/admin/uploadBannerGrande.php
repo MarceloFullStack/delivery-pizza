@@ -11,7 +11,7 @@ $file = $uploaddir .basename(''.$num.'.jpg');
 if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) { 
   echo ''.$num.'.jpg';
   $foto = ''.$num.'.jpg';
-  $insert=mysql_query("UPDATE config SET banner='$foto'");
+  $insert=mysqli_query($db,"UPDATE config SET banner='$foto'");
 } else {
 	echo 'erro';
 }

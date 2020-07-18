@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  ErrorDocument 400     /erro/
+  ErrorDocument 401     /erro/
+  ErrorDocument 403     /erro/
+  ErrorDocument 404     /erro/
+  ErrorDocument 500     /erro/
+
+  RewriteRule ^([^/\.]+)/?$ index.php?page=$1 [NC,L]
+  RewriteRule ^([^/\.]+)/([^/\.]+)/?$ index.php?page=$1&id=$2 [NC,L]
+  RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ index.php?page=$1&id=$2&id2=$3 [NC,L]
+  RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ index.php?page=$1&id=$2&id2=$3&id3=$4 [NC,L]
+  RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/([^/\.]+)/([^/\.]+)/?$ index.php?page=$1&id=$2&id2=$3&id3=$4&id4=$5 [NC,L]
+  
+<Files *.php>
+    Order Deny,Allow
+    Deny from all
+    Allow from pdv.php
+</Files>
+
+<Files index.php>
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files pdv.php>
+    Order Allow,Deny
+    Allow from all
+</Files>

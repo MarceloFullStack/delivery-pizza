@@ -15,7 +15,7 @@ $categoria  = $_POST['categoria'];
 $estado     = $_POST['estado'];
 $id         = $_POST['id'];
 
-$logface  = mysql_query("UPDATE cidades SET cidade='$categoria', estado='$estado' WHERE id='$id'");	 
+$logface  = mysqli_query($db,"UPDATE cidades SET cidade='$categoria', estado='$estado' WHERE id='$id'");	 
 
 ?>
 </body>

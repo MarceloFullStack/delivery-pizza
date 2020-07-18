@@ -4,11 +4,11 @@ if($_POST['id']){
 
 $id=$_POST['id'];
 
-$cat=mysql_query("SELECT * FROM categorias WHERE id='$id'");
-$categoria=mysql_fetch_assoc($cat);
+$cat=mysqli_query($db,"SELECT * FROM categorias WHERE id='$id'");
+$categoria=mysqli_fetch_assoc($cat);
 
-$delete = mysql_query("delete from categorias where id='$id'");
-$delete = mysql_query("delete from produtos where categoria='".$categoria['nome']."'");
+$delete = mysqli_query($db,"delete from categorias where id='$id'");
+$delete = mysqli_query($db,"delete from produtos where categoria='".$categoria['nome']."'");
 
 }
 ?>

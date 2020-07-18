@@ -166,8 +166,8 @@ $("#enviar").click(function() {
           <div class="box_15">
             <div class="box_22">
         <?php
-		$cat=mysql_query("SELECT * FROM tamanho");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM tamanho");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
         <div class="box_195">
               <div class="box_101" id="bar<?php echo $categ['id'] ?>">

@@ -20,21 +20,21 @@ $quantidade = $quantidades - 1;
 
 $somando = $quantidades + 1;
 
-$result=mysql_query("SELECT * FROM ingredientes WHERE nome='$nome'");
-$row = mysql_fetch_assoc($result);
+$result=mysqli_query($db,"SELECT * FROM ingredientes WHERE nome='$nome'");
+$row = mysqli_fetch_assoc($result);
 
 if($row['maximo_adicional'] > $quantidade){
 
-$op=mysql_query("SELECT * FROM opcionais_lanches WHERE sessao_usuario='$sessao' and produto='$produto' and nome='$nome'");
-$num=mysql_num_rows($op);
+$op=mysqli_query($db,"SELECT * FROM opcionais_lanches WHERE sessao_usuario='$sessao' and produto='$produto' and nome='$nome'");
+$num=mysqli_num_rows($op);
 
 if($num>0){
 
-$result=mysql_query("UPDATE opcionais_lanches SET quantidade='$quantidade' WHERE sessao_usuario='$sessao' and produto='$produto' and nome='$nome'");
+$result=mysqli_query($db,"UPDATE opcionais_lanches SET quantidade='$quantidade' WHERE sessao_usuario='$sessao' and produto='$produto' and nome='$nome'");
 
 }else{
 
-$result=mysql_query("INSERT INTO opcionais_lanches (quantidade, nome, valor, sessao_usuario, produto) VALUES ('$quantidade', '".$row['nome']."', '".$row['valor']."', '$sessao', '$produto')");
+$result=mysqli_query($db,"INSERT INTO opcionais_lanches (quantidade, nome, valor, sessao_usuario, produto) VALUES ('$quantidade', '".$row['nome']."', '".$row['valor']."', '$sessao', '$produto')");
 
 }
 echo '1';

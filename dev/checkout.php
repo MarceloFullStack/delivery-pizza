@@ -9,8 +9,8 @@ $char = session_id();
 $char = $_SESSION['id_usu_pizza'];
 } ?> 
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -174,7 +174,7 @@ $(function() {
         
 <select name="cidade" id="cidade" onchange="getValor8(this.value, 0)">
   <option value="">Escolha uma Cidade</option>
-  <?php $cid=mysql_query("SELECT * FROM cidades"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+  <?php $cid=mysqli_query($db,"SELECT * FROM cidades"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
 </select>
@@ -233,22 +233,22 @@ $(function() {
       <div class="box125">
       
 <?php
-$item=mysql_query("SELECT * FROM store WHERE sessao='".$char."' and status='0'");
-$quantidade=mysql_num_rows($item);
+$item=mysqli_query($db,"SELECT * FROM store WHERE sessao='".$char."' and status='0'");
+$quantidade=mysqli_num_rows($item);
 
-$somando = mysql_query("SELECT valor, SUM(valor * quantidade) AS soma FROM store WHERE sessao='".$char."' and status='0'");
-$soma=mysql_fetch_assoc($somando);
+$somando = mysqli_query($db,"SELECT valor, SUM(valor * quantidade) AS soma FROM store WHERE sessao='".$char."' and status='0'");
+$soma=mysqli_fetch_assoc($somando);
 ?>      
  <div class="box143 shopping-cart" <?php if($quantidade==0){ ?> style="display:none" <?php } ?>>
   <ul id="carrinho_p">
-<?php while($itens=mysql_fetch_assoc($item)){ ?>
+<?php while($itens=mysqli_fetch_assoc($item)){ ?>
 <?php
 if($itens['pizza']<>'sim'){
-$bebidas=mysql_query("SELECT * FROM produtos WHERE id='".$itens['produto_id']."'"); $bebida=mysql_fetch_assoc($bebidas);
+$bebidas=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$itens['produto_id']."'"); $bebida=mysqli_fetch_assoc($bebidas);
 
 if($bebida['tamanhos'] == '1'){
-$ta=mysql_query("SELECT * FROM tamanhos WHERE id='".$itens['id_tamanho']."'");
-$tamanho=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id='".$itens['id_tamanho']."'");
+$tamanho=mysqli_fetch_assoc($ta);
 $nome = ''.$bebida['nome'].' - '.$tamanho['tamanho'].'';
 }else{
 $nome = $bebida['nome'];
@@ -335,7 +335,7 @@ $img  = '<img src="fotos_produtos/'.$bebida['foto'].'" width="25" height="25"/>'
       </div>
       <div class="box77a"><ul>
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='bebidas' limit 9"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='bebidas' limit 9"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <li class="addcarrinho add-to-cart" id="addcarrinho-<?php echo $produtos['id'] ?>" data-nome="<?php echo $produtos['nome'] ?>" data-valor="<?php echo $produtos['valor'] ?>" data-id="<?php echo $produtos['id'] ?>" data-foto="<?php echo $produtos['foto'] ?>">
 <div class="box170">
       <div class="box29">

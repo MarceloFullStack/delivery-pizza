@@ -1,7 +1,7 @@
 <?php
 include('bd.php');
-$ta=mysql_query("SELECT * FROM tamanho WHERE tamanho='".$_POST['tamanho']."'");
-$tamanho=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanho WHERE tamanho='".$_POST['tamanho']."'");
+$tamanho=mysqli_fetch_assoc($ta);
 ?>
 <?php if($tamanho['quant_sabores'] =='1'){ ?>
 <div class="box16a" id="escolher_sabores">

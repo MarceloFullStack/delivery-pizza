@@ -14,7 +14,7 @@ include('bd.php');
 $foto          = $_POST['foto'];
 $categoria     = $_POST['categoria'];
 
-$logface  = mysql_query("INSERT INTO imagens_pizzas (imagem, categoria) VALUES ('$foto', '$categoria')");
+$logface  = mysqli_query($db,"INSERT INTO imagens_pizzas (imagem, categoria) VALUES ('$foto', '$categoria')");
 
 ?>
 </body>

@@ -15,7 +15,7 @@ $categoria     = $_POST['categoria'];
 $fatias        = $_POST['fatias'];
 $sabores       = $_POST['sabores'];
 
-$logface  = mysql_query("INSERT INTO tamanho (quant_sabores, tamanho, fatias) VALUES ('$sabores', '$categoria', '$fatias')");
+$logface  = mysqli_query($db,"INSERT INTO tamanho (quant_sabores, tamanho, fatias) VALUES ('$sabores', '$categoria', '$fatias')");
 
 ?>
 </body>

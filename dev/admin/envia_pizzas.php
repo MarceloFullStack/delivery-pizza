@@ -19,7 +19,7 @@ $valor         = $_POST['valor'];
 $foto          = $_POST['foto'];
 $ingrediente   = trim($ingredientes, ",");
 $opcionais     = trim($ingredientes_adicionais, ",");
-	  $logface  = mysql_query("INSERT INTO produtos (opcionais, foto, sabor, tamanho, valor, ingredientes, categoria, data) VALUES ('$opcionais', '$foto', '$sabor', '$tamanho', '$valor', '$ingrediente', 'pizzas', '".date('d/m/Y')."')");
+	  $logface  = mysqli_query($db,"INSERT INTO produtos (opcionais, foto, sabor, tamanho, valor, ingredientes, categoria, data) VALUES ('$opcionais', '$foto', '$sabor', '$tamanho', '$valor', '$ingrediente', 'pizzas', '".date('d/m/Y')."')");
 	   
 
 ?>

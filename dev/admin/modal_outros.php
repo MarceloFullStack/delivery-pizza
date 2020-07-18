@@ -8,8 +8,8 @@ include('bd.php');
    
 <div class="box_modal4u jumper" data-id="#mostrar-Bebidas">Bebida</div>
     
-<?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas' and url<>'bebidas'");
-while($categ=mysql_fetch_assoc($cat)){ ?>
+<?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas' and url<>'bebidas'");
+while($categ=mysqli_fetch_assoc($cat)){ ?>
 <div class="box_modal5u jumper" data-id="#mostrar-<?php echo $categ['nome'] ?>"><?php echo $categ['nome'] ?></div>
 <?php } ?>
     
@@ -72,7 +72,7 @@ if($num>0){
          <li>
 		  <?php echo $idl ?><label class="switch">
           <input type="checkbox" id="permitir_comentarios" name="ing[]" value="<?php echo $idl ?>" checked="checked" disabled="disabled" class="switch-input" />
-          <span class="switch-label" data-on="Sim" data-off="Não"></span> <span class="switch-handle"></span></label>
+          <span class="switch-label" data-on="Sim" data-off="Nï¿½o"></span> <span class="switch-handle"></span></label>
          </li>
         <?php } ?>
        </ul>
@@ -112,7 +112,7 @@ if($num>0){
        
         <div class="box">
           <ul>
-<?php $ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."'"); while($tamanho=mysql_fetch_assoc($ta)){ ?>          
+<?php $ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."'"); while($tamanho=mysqli_fetch_assoc($ta)){ ?>          
 <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-novovalor="<?php echo $tamanho['valor'] ?>"  data-iddotamanho="<?php echo $tamanho['id'] ?>">
 <img src="/arquivos/icon_tamanho.jpg" /><label>Tamanho</label><small><?php echo $tamanho['tamanho'] ?> R$ <?php echo $tamanho['valor'] ?></small>
 </li>
@@ -130,7 +130,7 @@ if($num>0){
         <div class="box16u" id="escolher_sabores">
         <img src="/arquivos/icon_tamanho.jpg" />
         <div id="escolher" data-novotamanho="">
-        <label>Tamanho</label><small>Tamanho único</small>
+        <label>Tamanho</label><small>Tamanho ï¿½nico</small>
         </div>
       </div> 
       </div>
@@ -159,8 +159,8 @@ if($num>0){
 		if($sessao_produto['tamanhos']<>'1'){
 		$valor = $sessao_produto['valor'];
 		}else{
-		$va=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."' order by id asc");
-		$val=mysql_fetch_assoc($va);
+		$va=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$sessao_produto['id']."' order by id asc");
+		$val=mysqli_fetch_assoc($va);
 		$valor = $val['valor'];
 		}
 		?>
@@ -181,8 +181,8 @@ if($num>0){
   
   
 <div class="box28u">      
-  <?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas' order by ordem asc");
-while($categ=mysql_fetch_assoc($cat)){
+  <?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas' order by ordem asc");
+while($categ=mysqli_fetch_assoc($cat)){
 ?>
 
 <!------------------------------------------------------------  PRODUTOS PARA MONTAR ---------------------------------------------------------------------------------->
@@ -191,7 +191,7 @@ while($categ=mysql_fetch_assoc($cat)){
       <div class="box77u">
 <ul>
 
-<?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='".$categ['url']."' order by rand()"); while($produtos=mysql_fetch_assoc($produto)){?>
+<?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='".$categ['url']."' order by rand()"); while($produtos=mysqli_fetch_assoc($produto)){?>
 
 <?php if($categ['montar']=='1'){ ?>
 
@@ -199,8 +199,8 @@ while($categ=mysql_fetch_assoc($cat)){
 <!-- Pegando o valor -->
 <?php
 if($produtos['tamanhos']=='1'){
-$ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$produtos['id']."'");
-$tam=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$produtos['id']."'");
+$tam=mysqli_fetch_assoc($ta);
 $valor = $tam['valor'];
 }else{
 $valor = $produtos['valor'];
@@ -223,8 +223,8 @@ $valor = $produtos['valor'];
 </div>
 </li>
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 ?> 
 </a>

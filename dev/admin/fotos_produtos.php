@@ -186,7 +186,7 @@ $("#enviar").click(function() {
             <select name="categoria" id="categoria">
                   <option value="">Escolha uma Categoria</option>
                   
-                  <?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['url'] ?>"><?php echo $categoria['nome'] ?></option>
                   <?php } ?>
   </select>
@@ -216,7 +216,7 @@ $(document).ready(function() {
             <div class="box_210">
             <ul>
             
-            <?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysql_fetch_assoc($cat)){?>
+            <?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas'"); while($categoria=mysqli_fetch_assoc($cat)){?>
             <li>Fotos <?php echo $categoria['nome'] ?><label class="switch">
             <input type="checkbox" id="permitir_comentarios" checked="checked" name="ing-1[]" value="'<?php echo $categoria['url'] ?>'" class="switch-input" />
             <span class="switch-label" data-on="Sim" data-off="Não"></span> <span class="switch-handle"></span></label>
@@ -230,8 +230,8 @@ $(document).ready(function() {
           <div class="box_15">
             <div class="box_22" id="ver_fotos">
         <?php
-		$cat=mysql_query("SELECT * FROM imagens_pizzas WHERE categoria<>'pizzas'");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM imagens_pizzas WHERE categoria<>'pizzas'");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
            <div class="box_196" id="bar<?php echo $categ['id'] ?>">
               <div class="box_185"><a class="delete_update" id="<?php echo $categ['id'] ?>"><div class="box_197"></div></a><img src="../fotos_produtos/<?php echo $categ['imagem'] ?>" width="120" height="120" /></div>

@@ -78,8 +78,8 @@ $(".box165n").click(function() {
   <div class="box208">Usar imagens modelo</div>
  <div class="box166n">
 <?php
-		$cat=mysql_query("SELECT * FROM imagens_pizzas WHERE categoria='pizzas'");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM imagens_pizzas WHERE categoria='pizzas'");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
               <div class="box165n" id="<?php echo $categ['imagem'] ?>"><div class="box165nn"><img src="../fotos_produtos/<?php echo $categ['imagem'] ?>" width="104" height="104" /></div></div>
         <?php } ?>

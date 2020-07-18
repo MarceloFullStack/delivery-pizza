@@ -106,16 +106,16 @@ return false;
       
       
 <?php
-$pedido=mysql_query("SELECT * FROM store_finalizado WHERE status='5' GROUP BY id_pedido");
-while($pedidos=mysql_fetch_assoc($pedido)){
-$cli=mysql_query("SELECT * FROM usuarios WHERE id_u='".$pedidos['id_estrangeiro']."'");
-$cliente=mysql_fetch_assoc($cli);
+$pedido=mysqli_query($db,"SELECT * FROM store_finalizado WHERE status='5' GROUP BY id_pedido");
+while($pedidos=mysqli_fetch_assoc($pedido)){
+$cli=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$pedidos['id_estrangeiro']."'");
+$cliente=mysqli_fetch_assoc($cli);
 
-$somando = mysql_query("SELECT valor, SUM(valor) AS soma FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
-$soma=mysql_fetch_assoc($somando);
+$somando = mysqli_query($db,"SELECT valor, SUM(valor) AS soma FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
+$soma=mysqli_fetch_assoc($somando);
 
-$tax  = mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."' and taxa_entrega<>'' GROUP BY taxa_entrega");
-$taxa = mysql_fetch_assoc($tax);
+$tax  = mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."' and taxa_entrega<>'' GROUP BY taxa_entrega");
+$taxa = mysqli_fetch_assoc($tax);
 	
 $total = $soma['soma'] + $taxa['taxa_entrega'];
 

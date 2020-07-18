@@ -10,5 +10,5 @@ include('bd.php');
 
     file_put_contents($filedir . "/" . $name . ".png", $decoded, LOCK_EX);
 	
-	$insert=mysql_query("INSERT INTO banners (banner) VALUES ('".$name.".png')");
+	$insert=mysqli_query($db,"INSERT INTO banners (banner) VALUES ('".$name.".png')");
 ?>    

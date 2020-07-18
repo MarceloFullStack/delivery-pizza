@@ -16,10 +16,10 @@ $valor                = $_POST['valor'];
 $maximo_adicional     = $_POST['maximo_adicional'];
 $permitir_adicional   = $_POST['permitir_adicional'];
 
-$ingred=mysql_query("SELECT * FROM ingredientes WHERE nome='$categoria'");
-$num=mysql_num_rows($ingred);
+$ingred=mysqli_query($db,"SELECT * FROM ingredientes WHERE nome='$categoria'");
+$num=mysqli_num_rows($ingred);
 if($num<1){
-$logface  = mysql_query("INSERT INTO ingredientes (nome, valor, maximo_adicional, permitir_adicional) VALUES ('$categoria', '$valor', '$maximo_adicional', '$permitir_adicional')");
+$logface  = mysqli_query($db,"INSERT INTO ingredientes (nome, valor, maximo_adicional, permitir_adicional) VALUES ('$categoria', '$valor', '$maximo_adicional', '$permitir_adicional')");
 }
 	 
 ?>

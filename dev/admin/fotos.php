@@ -54,8 +54,8 @@ $(".box165n").click(function() {
   <div class="box35n">Selecione uma Imagem</div>
  <div class="box166n">
 <?php
-		$cat=mysql_query("SELECT * FROM imagens_pizzas");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM imagens_pizzas");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
               <div class="box165n" id="<?php echo $categ['imagem'] ?>"><img src="../fotos_produtos/<?php echo $categ['imagem'] ?>" width="104" height="104" /></div>
         <?php } ?>

@@ -8,7 +8,7 @@ header("access-control-allow-origin: https://pagseguro.uol.com.br");
 if($_POST['notificationCode']){
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
-    //Todo resto do código iremos inserir aqui.
+    //Todo resto do cï¿½digo iremos inserir aqui.
 
     $email = 'messiasjgmm@hotmail.com';
     $token = 'A639D9BC406844F8AEF105D2BA6730D7';
@@ -22,7 +22,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     curl_close($curl);
 
     if($transaction == 'Unauthorized'){
-        //Insira seu código avisando que o sistema está com problemas, sugiro enviar um e-mail avisando para alguém fazer a manutenção
+        //Insira seu cï¿½digo avisando que o sistema estï¿½ com problemas, sugiro enviar um e-mail avisando para alguï¿½m fazer a manutenï¿½ï¿½o
 
         exit;//Mantenha essa linha
     }
@@ -37,11 +37,11 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     if($transactionStatus == 1){
         $transactionStatus = 'Aguardando pagamento';
     } elseif($transactionStatus == 2){
-        $transactionStatus = 'Em análise';
+        $transactionStatus = 'Em anï¿½lise';
     } elseif($transactionStatus == 3){ // :)
         $transactionStatus = 'Paga';
     } elseif($transactionStatus == 4){ // :D
-        $transactionStatus = 'Disponível';
+        $transactionStatus = 'Disponï¿½vel';
     } elseif($transactionStatus == 5){
         $transactionStatus = 'Em disputa';
     } elseif($transactionStatus == 6){
@@ -62,7 +62,7 @@ if($transactionTitulo == 'PLANO FULL'){
 $status = '3';
 }
 
-$insere = mysql_query("UPDATE admin SET nivel='".$status."', data_expira='".date('d/m/Y', strtotime("35 days",strtotime(''.date('d-m-Y').'')))."'");
+$insere = mysqli_query($db,"UPDATE admin SET nivel='".$status."', data_expira='".date('d/m/Y', strtotime("35 days",strtotime(''.date('d-m-Y').'')))."'");
 
 }
 

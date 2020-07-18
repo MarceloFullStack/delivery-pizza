@@ -52,14 +52,14 @@ if(!isset($_SESSION['id_usu_pizza'])) {  echo "<script>window.location='montar'<
     <ul>  
       
 <?php
-$pedido=mysql_query("SELECT * FROM store_finalizado WHERE id_estrangeiro='".$_SESSION['id_usu_ario']."' group by id_pedido");
-while($pedidos=mysql_fetch_assoc($pedido)){
+$pedido=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_estrangeiro='".$_SESSION['id_usu_ario']."' group by id_pedido");
+while($pedidos=mysqli_fetch_assoc($pedido)){
 
-$item=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
-$taxa = mysql_fetch_assoc($item);
+$item=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
+$taxa = mysqli_fetch_assoc($item);
 
-$somando = mysql_query("SELECT valor, SUM(valor * quantidade) AS soma FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
-$soma=mysql_fetch_assoc($somando);
+$somando = mysqli_query($db,"SELECT valor, SUM(valor * quantidade) AS soma FROM store_finalizado WHERE id_pedido='".$pedidos['id_pedido']."'");
+$soma=mysqli_fetch_assoc($somando);
 
 
 ?>      

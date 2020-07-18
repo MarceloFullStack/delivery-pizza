@@ -4,17 +4,17 @@ session_start();
 <?php
 include('bd.php');
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE id_u='".$_SESSION['id_usu_ario']."'");
-$usuario=mysql_fetch_assoc($usu);
+$usu=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$_SESSION['id_usu_ario']."'");
+$usuario=mysqli_fetch_assoc($usu);
 
-$bair=mysql_query("SELECT * FROM bairros WHERE id='".$usuario['bairro']."'");
-$bairro=mysql_fetch_assoc($bair);
+$bair=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$usuario['bairro']."'");
+$bairro=mysqli_fetch_assoc($bair);
 
 
-$atualiza = mysql_query("UPDATE store SET taxa_entrega='0.00' WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$atualiza = mysqli_query($db,"UPDATE store SET taxa_entrega='0.00' WHERE sessao='".$_SESSION['id_usu_pizza']."'");
 
-$result=mysql_query("SELECT SUM(valor * quantidade) AS valor_soma FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
-$row = mysql_fetch_assoc($result); 
+$result=mysqli_query($db,"SELECT SUM(valor * quantidade) AS valor_soma FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$row = mysqli_fetch_assoc($result); 
 
 $sum = $row['valor_soma'];
 

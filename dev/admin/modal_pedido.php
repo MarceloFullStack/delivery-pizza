@@ -811,7 +811,7 @@ border-bottom-left-radius: 3px;
     <div class="box_modal3">Pizzas</div>
     <div class="box_modal4">Bebidas</div>
     
-<?php $cat=mysql_query("SELECT * FROM categorias WHERE url<>'pizzas' and url<>'bebidas'"); while($categ=mysql_fetch_assoc($cat)){ ?><div class="box_modal5"><?php echo $categ['nome'] ?></div><?php } ?>
+<?php $cat=mysqli_query($db,"SELECT * FROM categorias WHERE url<>'pizzas' and url<>'bebidas'"); while($categ=mysqli_fetch_assoc($cat)){ ?><div class="box_modal5"><?php echo $categ['nome'] ?></div><?php } ?>
     
   </div>
   <div class="box_modal16">
@@ -882,7 +882,7 @@ border-bottom-left-radius: 3px;
     <small>8 fatias</small></div>
     <div class="boxb">
     <ul>
-      <?php $tama=mysql_query("SELECT * FROM tamanho"); while($tamanho=mysql_fetch_assoc($tama)){ ?>         
+      <?php $tama=mysqli_query($db,"SELECT * FROM tamanho"); while($tamanho=mysqli_fetch_assoc($tama)){ ?>         
       <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-tamanhoid="<?php echo $tamanho['id'] ?>" data-fatias="<?php echo $tamanho['fatias'] ?> fatias">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label><?php echo $tamanho['tamanho'] ?></label>
       <small><?php echo $tamanho['fatias'] ?> fatias</small></li>
@@ -920,7 +920,7 @@ border-bottom-left-radius: 3px;
     <small>Sem borda recheada</small></div>
     <div class="boxc">
     <ul>
-      <?php $bord=mysql_query("SELECT * FROM borda"); while($borda=mysql_fetch_assoc($bord)){ ?>         
+      <?php $bord=mysqli_query($db,"SELECT * FROM borda"); while($borda=mysqli_fetch_assoc($bord)){ ?>         
       <li data-borda="<?php echo $borda['nome'] ?>" data-taxa="<?php echo $borda['taxa'] ?>">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label>Borda Recheada</label>
       <small><?php echo $borda['nome'] ?> + R$ <?php echo $borda['taxa'] ?></small></li>

@@ -5,19 +5,19 @@ include('bd.php');
 include_once 'time_stamp.php';
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-$pedido=mysql_fetch_assoc($ped);
+$ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+$pedido=mysqli_fetch_assoc($ped);
 
-$cli=mysql_query("SELECT * FROM usuarios WHERE id_u='".$pedido['id_estrangeiro']."'");
-$cliente=mysql_fetch_assoc($cli);
+$cli=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$pedido['id_estrangeiro']."'");
+$cliente=mysqli_fetch_assoc($cli);
 
-$somando = mysql_query("SELECT valor, SUM(valor * quantidade) AS soma FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-$soma=mysql_fetch_assoc($somando);
+$somando = mysqli_query($db,"SELECT valor, SUM(valor * quantidade) AS soma FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+$soma=mysqli_fetch_assoc($somando);
 
-$update=mysql_query("UPDATE store_finalizado SET status_view='1' WHERE id_pedido='".$_GET['id']."'");
+$update=mysqli_query($db,"UPDATE store_finalizado SET status_view='1' WHERE id_pedido='".$_GET['id']."'");
 
-$ba_tx=mysql_query("SELECT * FROM bairros WHERE id='".$cliente['bairro']."'");
-$ba_taxa=mysql_fetch_assoc($ba_tx);
+$ba_tx=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$cliente['bairro']."'");
+$ba_taxa=mysqli_fetch_assoc($ba_tx);
 
 $taxa = $ba_taxa['taxa'];
 
@@ -317,16 +317,16 @@ $(function($) {
                     <div class="box_156">
                     
                     <?php
-					$ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-			        while($pedi=mysql_fetch_assoc($ped)){
+					$ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+			        while($pedi=mysqli_fetch_assoc($ped)){
                      
 					if($pedi['pizza']<>'sim'){
-                    $bebidas=mysql_query("SELECT * FROM produtos WHERE id='".$pedi['produto_id']."'");
-					$bebida=mysql_fetch_assoc($bebidas);
+                    $bebidas=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$pedi['produto_id']."'");
+					$bebida=mysqli_fetch_assoc($bebidas);
 					
 					if($bebida['tamanhos'] == '1'){
-					$ta=mysql_query("SELECT * FROM tamanhos WHERE id='".$pedi['id_tamanho']."'");
-					$tamanho=mysql_fetch_assoc($ta);
+					$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id='".$pedi['id_tamanho']."'");
+					$tamanho=mysqli_fetch_assoc($ta);
 					$nome = ''.$bebida['nome'].' - '.$tamanho['tamanho'].'';
 					}else{
 					$nome = $bebida['nome'];
@@ -392,8 +392,8 @@ $(function($) {
                     <!-------------------------------------------------  taxa de entrega  -----------------------------------------------------------------> 
                     <?php
 					
-					$ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-$pedido=mysql_fetch_assoc($ped);
+					$ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+$pedido=mysqli_fetch_assoc($ped);
 
 if($pedido['entrega']=='Entrega a Domicílio'){ ?>
                      <div class="box_157">
@@ -424,8 +424,8 @@ if($pedido['entrega']=='Entrega a Domicílio'){ ?>
                   </div>
                   <div class="box_147">
                   <?php
-                  $ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-			      $pedi=mysql_fetch_assoc($ped);
+                  $ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+			      $pedi=mysqli_fetch_assoc($ped);
 				  echo $pedi['obs'];
 				  ?>
                   </div>
@@ -452,7 +452,7 @@ if($pedido['entrega']=='Entrega a Domicílio'){ ?>
                     </div>
                     <div class="box_177">
                       <div class="box_178">Bairro:</div>
-                      <?php $ba=mysql_query("SELECT * FROM bairros WHERE id='".$cliente['bairro']."'"); $bai=mysql_fetch_assoc($ba); ?>
+                      <?php $ba=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$cliente['bairro']."'"); $bai=mysqli_fetch_assoc($ba); ?>
                       <div class="box_179"><?php  echo $bai['nome'] ?></div>
                     </div>
                     <div class="box_177">
@@ -474,8 +474,8 @@ if($pedido['entrega']=='Entrega a Domicílio'){ ?>
                                   <select id="select1" name="select1" style="width:250px; padding:5px; float: left;">
 			<option value="">Buscar entregador</option>
  <?php
- $client=mysql_query("SELECT * from entregador");
- while($clientes=mysql_fetch_assoc($client)){
+ $client=mysqli_query($db,"SELECT * from entregador");
+ while($clientes=mysqli_fetch_assoc($client)){
  ?>           
 			<option value="<?php echo $clientes['nome'] ?>" data-left="<img src='../fotos_entregadores/<?php echo $clientes['foto'] ?>'>"><?php echo $clientes['nome'] ?></option>
   <?php } ?>          
@@ -488,8 +488,8 @@ if($pedido['entrega']=='Entrega a Domicílio'){ ?>
                   <div class="box_170">
                     <div class="box_171">Status do Pedido</div>
 <?php
-$ped=mysql_query("SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
-$pedido=mysql_fetch_assoc($ped);
+$ped=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_pedido='".$_GET['id']."'");
+$pedido=mysqli_fetch_assoc($ped);
 if($pedido['status']=='1'){ ?>                    
 <div class="box_172"><input type="radio" id="radio1" name="radio-1-set" value="2" class="regular-radio" /><label for="radio1"></label><span>Aprovado</span></div>
 <div class="box_172"><input type="radio" id="radio2" name="radio-1-set" value="3" class="regular-radio" /><label for="radio2"></label><span>No forno</span></div>

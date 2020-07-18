@@ -245,7 +245,7 @@ include('bd.php');
     <small>8 fatias</small></div>
     <div class="boxb">
     <ul>
-      <?php $tama=mysql_query("SELECT * FROM tamanho"); while($tamanho=mysql_fetch_assoc($tama)){ ?>         
+      <?php $tama=mysqli_query($db,"SELECT * FROM tamanho"); while($tamanho=mysqli_fetch_assoc($tama)){ ?>         
       <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-tamanhoid="<?php echo $tamanho['id'] ?>" data-fatias="<?php echo $tamanho['fatias'] ?> fatias">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label><?php echo $tamanho['tamanho'] ?></label>
       <small><?php echo $tamanho['fatias'] ?> fatias</small></li>
@@ -289,7 +289,7 @@ include('bd.php');
     <small>Sem borda recheada</small></div>
     <div class="boxc">
     <ul>
-      <?php $bord=mysql_query("SELECT * FROM borda"); while($borda=mysql_fetch_assoc($bord)){ ?>         
+      <?php $bord=mysqli_query($db,"SELECT * FROM borda"); while($borda=mysqli_fetch_assoc($bord)){ ?>         
       <li data-borda="<?php echo $borda['nome'] ?>" data-taxa="<?php echo $borda['taxa'] ?>">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label>Borda Recheada</label>
       <small><?php echo $borda['nome'] ?> + R$ <?php echo $borda['taxa'] ?></small></li>
@@ -323,7 +323,7 @@ include('bd.php');
     </div>
     <div class="box77"><ul>
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria<>'pizzas'"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria<>'pizzas'"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <li class="addcarrinho" id="addcarrinho-<?php echo $produtos['id'] ?>" data-nome="<?php echo $produtos['nome'] ?>" data-valor="<?php echo $produtos['valor'] ?>" data-id="<?php echo $produtos['id'] ?>" data-foto="<?php echo $produtos['foto'] ?>">
       <div class="box29">
       <img src="fotos_produtos/<?php echo $produtos['foto'] ?>"/>

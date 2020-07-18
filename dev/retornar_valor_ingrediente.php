@@ -1,8 +1,8 @@
 <?php
 include('bd.php');
 
-$result=mysql_query("SELECT * FROM ingredientes WHERE nome='".$_POST['nome']."'");
-$row = mysql_fetch_assoc($result); 
+$result=mysqli_query($db,"SELECT * FROM ingredientes WHERE nome='".$_POST['nome']."'");
+$row = mysqli_fetch_assoc($result); 
 
 $sum = $row['valor'];
 

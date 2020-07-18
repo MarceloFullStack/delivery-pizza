@@ -1,8 +1,8 @@
 <?php
 include('bd.php');
 
-$produto=mysql_query("SELECT * FROM produtos WHERE id='".$_POST['id']."'");
-$produtos=mysql_fetch_assoc($produto);
+$produto=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$_POST['id']."'");
+$produtos=mysqli_fetch_assoc($produto);
 ?>
 <div class="box34" id="ingredientes_opcionais" style="display:none;" data-opcionais="<?php echo $_POST['opcionais'] ?>">
   <div class="box35">Ingredientes opcionais</div>
@@ -75,8 +75,8 @@ if($pos === false) {
     $ligado = 'checked="checked"';
 }
 
-$ingred=mysql_query("SELECT * FROM ingredientes WHERE nome='".$idl."'");
-$ingrediente=mysql_fetch_assoc($ingred);
+$ingred=mysqli_query($db,"SELECT * FROM ingredientes WHERE nome='".$idl."'");
+$ingrediente=mysqli_fetch_assoc($ingred);
 ?>
 
 <?php if($ingrediente['valor']){ ?>

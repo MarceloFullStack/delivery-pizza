@@ -1,7 +1,7 @@
 ﻿<?php
 include('bd.php');
-$ta=mysql_query("SELECT * FROM sabores WHERE sabor='".$_POST['sabor']."'");
-$tamanho=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM sabores WHERE sabor='".$_POST['sabor']."'");
+$tamanho=mysqli_fetch_assoc($ta);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,7 +12,7 @@ $tamanho=mysql_fetch_assoc($ta);
 <body>
 <?php if($tamanho['extra'] =='1'){ ?>
 <select name="boxextra-<?php echo $_POST['pdcp'] ?>-<?php echo $_POST['fatiass'] ?>" disabled="disabled" id="permitir_extra-<?php echo $tamanho['id'] ?>-<?php echo $_POST['pdcp'] ?>-<?php echo $_POST['fatiass'] ?>"><option value="" selected="selected">Ingrediente grátis?</option>
-  <?php $extr=mysql_query("SELECT * FROM extras"); while($extras=mysql_fetch_assoc($extr)){ ?>
+  <?php $extr=mysqli_query($db,"SELECT * FROM extras"); while($extras=mysqli_fetch_assoc($extr)){ ?>
   <option value="<?php echo $extras['nome'] ?>"><?php echo $extras['nome'] ?></option>
   <?php } ?>
 </select>

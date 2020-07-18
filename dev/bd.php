@@ -2,7 +2,7 @@
 date_default_timezone_set( "America/Sao_Paulo" );
 ?>
 <?php
-$hostname = "127.0.0.1:3307";                 
+$hostname = "mysql";                 
 $user = "root";                            
 $pass = "root";                             
 $dbase = "delivery";                          
@@ -12,7 +12,7 @@ $db = mysqli_connect($hostname,$user,$pass, $dbase);
 
 <?php
 function runSQL($rsql) {
-	$hostname = "127.0.0.1:3307";
+	$hostname = "mysql";
 	$username = "root";
 	$password = "root";
 	$dbname   = "delivery";

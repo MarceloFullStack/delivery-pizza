@@ -3,8 +3,8 @@
 include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$con=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($con);
+$con=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($con);
 ?>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -169,8 +169,8 @@ $(function($) {
           <div class="box_15">
             <div class="box_22">
         <?php
-		$cat=mysql_query("SELECT * FROM extras");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM extras");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
         <div class="box_195">
               <div class="box_101" id="bar<?php echo $categ['id'] ?>">

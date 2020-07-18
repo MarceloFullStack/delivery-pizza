@@ -6,10 +6,10 @@ include('bd.php');
 
 $id = $_POST['id'];
 
-$prod=mysql_query("SELECT * FROM store WHERE id='$id'");
-$produto=mysql_fetch_assoc($prod);
+$prod=mysqli_query($db,"SELECT * FROM store WHERE id='$id'");
+$produto=mysqli_fetch_assoc($prod);
 
 if($produto['quantidade']>1){
-$sel=mysql_query("UPDATE store SET quantidade=quantidade-1 WHERE id='$id'");
+$sel=mysqli_query($db,"UPDATE store SET quantidade=quantidade-1 WHERE id='$id'");
 }
 ?>

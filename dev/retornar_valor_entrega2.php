@@ -5,12 +5,12 @@ session_start();
 include('bd.php');
 
 
-$result=mysql_query("SELECT SUM(valor * quantidade) AS valor_soma FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$result=mysqli_query($db,"SELECT SUM(valor * quantidade) AS valor_soma FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
 
-$valor=mysql_query("SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
-$taxa = mysql_fetch_assoc($valor);
+$valor=mysqli_query($db,"SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$taxa = mysqli_fetch_assoc($valor);
 
-$row = mysql_fetch_assoc($result); 
+$row = mysqli_fetch_assoc($result); 
 
 $sum = $row['valor_soma'] + $taxa['taxa_entrega'];
 

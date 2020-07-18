@@ -6,11 +6,11 @@ include('bd.php');
     $q = strtolower($_GET["term"]);
 
     $return = array();
-     $query = mysql_query("SELECT * FROM usuarios where nome like '%$q%'");
-            while ($cresult=mysql_fetch_assoc($query)){
+     $query = mysqli_query($db,"SELECT * FROM usuarios where nome like '%$q%'");
+            while ($cresult=mysqli_fetch_assoc($query)){
 			
-			$ba=mysql_query("SELECT * FROM bairros WHERE id='".$cresult['bairro']."'");
-			$bairro=mysql_fetch_assoc($ba);
+			$ba=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$cresult['bairro']."'");
+			$bairro=mysqli_fetch_assoc($ba);
 			
 			array_push($return,array(
 			'endereco'=>$cresult['endereco'],

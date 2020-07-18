@@ -22,20 +22,20 @@ $bbb = array('a','e','i','o','u','c','d','n','s','y','-','');
 return trim(trim(trim(preg_replace('/-{2,}/s', '-', preg_replace($aaa, $bbb, strtolower($str)))),'_'),'-');
 }
 
-$cat=mysql_query("SELECT * FROM categorias order by id desc");
-$categ=mysql_fetch_assoc($cat);
+$cat=mysqli_query($db,"SELECT * FROM categorias order by id desc");
+$categ=mysqli_fetch_assoc($cat);
 
 $ordem = $categ['id'] + 1;
 
-$usern=mysql_query("SELECT * FROM categorias WHERE url='".seoUrl($categoria)."'");
-$usernam=mysql_num_rows($usern);
+$usern=mysqli_query($db,"SELECT * FROM categorias WHERE url='".seoUrl($categoria)."'");
+$usernam=mysqli_num_rows($usern);
 if($usernam==0) {
 $slug  = seoUrl($categoria);
 
 
 
-	  $logface  = mysql_query("INSERT INTO categorias (nome, url, montar, ordem, posicao, escolha_ingredientes) VALUES ('$categoria', '$slug', '$montar', '$ordem', '$posicao', '$escolha_ingredientes')");
-	  $logarface = mysql_fetch_assoc($logface);
+	  $logface  = mysqli_query($db,"INSERT INTO categorias (nome, url, montar, ordem, posicao, escolha_ingredientes) VALUES ('$categoria', '$slug', '$montar', '$ordem', '$posicao', '$escolha_ingredientes')");
+	  $logarface = mysqli_fetch_assoc($logface);
 	  
 }	 
 

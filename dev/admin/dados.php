@@ -4,8 +4,8 @@ include('bd.php');
 include_once 'time_stamp.php';
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$clie=mysql_query("SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
-$cliente=mysql_fetch_assoc($clie);
+$clie=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
+$cliente=mysqli_fetch_assoc($clie);
 ?>  
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -137,13 +137,13 @@ function showFilled(Value)
       
       
 <?php
-$pedido=mysql_query("SELECT * FROM store_finalizado WHERE id_estrangeiro='".$_GET['id']."' GROUP BY id_pedido");
-while($pedidos=mysql_fetch_assoc($pedido)){
-$cli=mysql_query("SELECT * FROM usuarios WHERE id_u='".$pedidos['id_estrangeiro']."'");
-$cliente=mysql_fetch_assoc($cli);
+$pedido=mysqli_query($db,"SELECT * FROM store_finalizado WHERE id_estrangeiro='".$_GET['id']."' GROUP BY id_pedido");
+while($pedidos=mysqli_fetch_assoc($pedido)){
+$cli=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$pedidos['id_estrangeiro']."'");
+$cliente=mysqli_fetch_assoc($cli);
 
-$somando = mysql_query("SELECT valor, SUM(valor) AS soma FROM store_finalizado");
-$soma=mysql_fetch_assoc($somando);
+$somando = mysqli_query($db,"SELECT valor, SUM(valor) AS soma FROM store_finalizado");
+$soma=mysqli_fetch_assoc($somando);
 
 ?> 
 <a href="pedido.php?id=<?php echo $pedidos['id_pedido'] ?>">  

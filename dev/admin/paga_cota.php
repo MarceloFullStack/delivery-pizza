@@ -8,7 +8,7 @@ header("access-control-allow-origin: https://pagseguro.uol.com.br");
 if($_POST['notificationCode']){
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
-    //Todo resto do código iremos inserir aqui.
+    //Todo resto do cï¿½digo iremos inserir aqui.
 
     $email = 'eduardolalmeida70@hotmail.com';
     $token = '30FD2694E93C4BFE8B0EC39A10B0C829';
@@ -22,7 +22,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     curl_close($curl);
 
     if($transaction == 'Unauthorized'){
-        //Insira seu código avisando que o sistema está com problemas, sugiro enviar um e-mail avisando para alguém fazer a manutenção
+        //Insira seu cï¿½digo avisando que o sistema estï¿½ com problemas, sugiro enviar um e-mail avisando para alguï¿½m fazer a manutenï¿½ï¿½o
 
         exit;//Mantenha essa linha
     }
@@ -37,11 +37,11 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     if($transactionStatus == 1){
         $transactionStatus = 'Aguardando pagamento';
     } elseif($transactionStatus == 2){
-        $transactionStatus = 'Em análise';
+        $transactionStatus = 'Em anï¿½lise';
     } elseif($transactionStatus == 3){ // :)
         $transactionStatus = 'Paga';
     } elseif($transactionStatus == 4){ // :D
-        $transactionStatus = 'Disponível';
+        $transactionStatus = 'Disponï¿½vel';
     } elseif($transactionStatus == 5){
         $transactionStatus = 'Em disputa';
     } elseif($transactionStatus == 6){
@@ -54,7 +54,7 @@ if($transactionStatus=='Paga'){
 
 $cota = explode('|', $transactionTitulo);
 
-$update=mysql_query("UPDATE subcotas SET data='".date('d/m/Y')."', status_subcota='0', email_pag='".$transactionEmail."', token='".$transactionCode."' WHERE id_subcota='".$cota[1]."'");
+$update=mysqli_query($db,"UPDATE subcotas SET data='".date('d/m/Y')."', status_subcota='0', email_pag='".$transactionEmail."', token='".$transactionCode."' WHERE id_subcota='".$cota[1]."'");
 
 }
 

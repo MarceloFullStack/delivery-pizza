@@ -23,14 +23,14 @@ $bbb = array('a','e','i','o','u','c','d','n','s','y','-','');
 return trim(trim(trim(preg_replace('/-{2,}/s', '-', preg_replace($aaa, $bbb, strtolower($str)))),'_'),'-');
 }
 
-$usern=mysql_query("SELECT * FROM produtos WHERE url='".seoUrl($nome)."'");
-$usernam=mysql_num_rows($usern);
+$usern=mysqli_query($db,"SELECT * FROM produtos WHERE url='".seoUrl($nome)."'");
+$usernam=mysqli_num_rows($usern);
 if($usernam==0) {
 $slug  = seoUrl($nome);
 
 
 
-	  $logface  = mysql_query("INSERT INTO produtos (foto, nome, url, valor, ingredientes, categoria, data, views) VALUES ('$foto', '$nome', '$slug', '$valor', '$ingredientes', '$categoria', '".date('d/m/Y')."', '0')");
+	  $logface  = mysqli_query($db,"INSERT INTO produtos (foto, nome, url, valor, ingredientes, categoria, data, views) VALUES ('$foto', '$nome', '$slug', '$valor', '$ingredientes', '$categoria', '".date('d/m/Y')."', '0')");
 	  
 }	 
 

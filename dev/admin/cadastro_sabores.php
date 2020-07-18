@@ -149,8 +149,8 @@ $("#enviar").click(function() {
           <div class="box_15">
             <div class="box_22">
         <?php
-		$cat=mysql_query("SELECT * FROM sabores");
-		while($categ=mysql_fetch_assoc($cat)){
+		$cat=mysqli_query($db,"SELECT * FROM sabores");
+		while($categ=mysqli_fetch_assoc($cat)){
 		?>
         <div class="box_195">
         

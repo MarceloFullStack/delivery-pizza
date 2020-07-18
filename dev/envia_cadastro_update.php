@@ -53,7 +53,7 @@ $lat = $output->results[0]->geometry->location->lat;
 $long = $output->results[0]->geometry->location->lng;
 
 
-$query=mysql_query("UPDATE usuarios SET cpf='$cpf', latitude='$lat', longitude='$long', nome='$nome', email='$email', telefone='$telefone', celular='$celular', cidade='$cidade', bairro='$bairro', endereco='$endereco', complemento='$complemento', numero='$numero' WHERE id_u='".$_SESSION['id_usu_ario']."'");
+$query=mysqli_query($db,"UPDATE usuarios SET cpf='$cpf', latitude='$lat', longitude='$long', nome='$nome', email='$email', telefone='$telefone', celular='$celular', cidade='$cidade', bairro='$bairro', endereco='$endereco', complemento='$complemento', numero='$numero' WHERE id_u='".$_SESSION['id_usu_ario']."'");
 
 
 echo "<script>window.location='/".$_POST['redireciona']."'</script>";

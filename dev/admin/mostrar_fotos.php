@@ -7,8 +7,8 @@ include('bd.php');
 <?php
 if($_POST['ingredi']<>''){
 
-$cat=mysql_query("SELECT * FROM imagens_pizzas WHERE categoria IN (".$_POST['ingredi'].")");
-while($categ=mysql_fetch_assoc($cat)){
+$cat=mysqli_query($db,"SELECT * FROM imagens_pizzas WHERE categoria IN (".$_POST['ingredi'].")");
+while($categ=mysqli_fetch_assoc($cat)){
 ?>
 <div class="box_196" id="bar<?php echo $categ['id'] ?>">
 <div class="box_185"><a class="delete_update" id="<?php echo $categ['id'] ?>">

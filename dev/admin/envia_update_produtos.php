@@ -27,12 +27,12 @@ $tamanhos    = $_POST['tamanhos'];
 $maximo       = $_POST['maximo'];
 
 if($tama == 'sim'){
-$logface  = mysql_query("UPDATE produtos SET maximo='$maximo', foto='$foto', nome='$nome', valor='$valor', ingredientes='$ingrediente', categoria='$categoria', tamanhos='1' WHERE id='$id'");
+$logface  = mysqli_query($db,"UPDATE produtos SET maximo='$maximo', foto='$foto', nome='$nome', valor='$valor', ingredientes='$ingrediente', categoria='$categoria', tamanhos='1' WHERE id='$id'");
 
-$prod=mysql_query("SELECT * FROM produtos WHERE id='$id'");
-$produto=mysql_fetch_assoc($prod);
+$prod=mysqli_query($db,"SELECT * FROM produtos WHERE id='$id'");
+$produto=mysqli_fetch_assoc($prod);
 
-$remove = mysql_query("DELETE FROM tamanhos WHERE id_estrangeiro='".$produto['id']."'");
+$remove = mysqli_query($db,"DELETE FROM tamanhos WHERE id_estrangeiro='".$produto['id']."'");
 
 $novo_tamanho = explode("|", $tamanhos);
 $novo_valor   = explode("|", $valores);
@@ -41,13 +41,13 @@ for ($p=0; $p<count($novo_tamanho); $p++) {
 $first  = $novo_tamanho[$p];
 $first2 = $novo_valor[$p];
 
-$logface  = mysql_query("INSERT INTO tamanhos (id_estrangeiro, tamanho, valor) VALUES ('".$produto['id']."', '$first', '$first2')");
+$logface  = mysqli_query($db,"INSERT INTO tamanhos (id_estrangeiro, tamanho, valor) VALUES ('".$produto['id']."', '$first', '$first2')");
 
 }
 
 }else{
 
-$logface  = mysql_query("UPDATE produtos SET foto='$foto', maximo='$maximo', nome='$nome', valor='$valor', ingredientes='$ingrediente', categoria='$categoria', tamanhos='0' WHERE id='$id'");
+$logface  = mysqli_query($db,"UPDATE produtos SET foto='$foto', maximo='$maximo', nome='$nome', valor='$valor', ingredientes='$ingrediente', categoria='$categoria', tamanhos='0' WHERE id='$id'");
 
  }
 

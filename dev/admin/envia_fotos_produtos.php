@@ -13,7 +13,7 @@ include('bd.php');
 
 $foto     = $_POST['foto'];
 
-$logface  = mysql_query("INSERT INTO imagens_pizzas (imagem, categoria) VALUES ('$foto', '".$_POST['categoria']."')");
+$logface  = mysqli_query($db,"INSERT INTO imagens_pizzas (imagem, categoria) VALUES ('$foto', '".$_POST['categoria']."')");
 
 ?>
 </body>

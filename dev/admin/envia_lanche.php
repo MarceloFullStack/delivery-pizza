@@ -30,10 +30,10 @@ $tama        = $_POST['tama'];
 $maximo      = $_POST['maximo'];
 
 if($tama == 'sim'){
-$logface  = mysql_query("INSERT INTO produtos (maximo, nome, ingredientes, categoria, data, foto, tamanhos) VALUES ('$maximo', '$nome', '$ingrediente', '$categoria', '".date('d/m/Y')."', '$foto', '1')");
+$logface  = mysqli_query($db,"INSERT INTO produtos (maximo, nome, ingredientes, categoria, data, foto, tamanhos) VALUES ('$maximo', '$nome', '$ingrediente', '$categoria', '".date('d/m/Y')."', '$foto', '1')");
 
-$prod=mysql_query("SELECT * FROM produtos order by id desc");
-$produto=mysql_fetch_assoc($prod);
+$prod=mysqli_query($db,"SELECT * FROM produtos order by id desc");
+$produto=mysqli_fetch_assoc($prod);
 
 
 $novo_tamanho = explode("|", $tamanhos);
@@ -43,13 +43,13 @@ for ($p=0; $p<count($novo_tamanho); $p++) {
 $first  = $novo_tamanho[$p];
 $first2 = $novo_valor[$p];
 
-$logface  = mysql_query("INSERT INTO tamanhos (id_estrangeiro, tamanho, valor) VALUES ('".$produto['id']."', '$first', '$first2')");
+$logface  = mysqli_query($db,"INSERT INTO tamanhos (id_estrangeiro, tamanho, valor) VALUES ('".$produto['id']."', '$first', '$first2')");
 
 }
 
 }else{
 
-$logface  = mysql_query("INSERT INTO produtos (maximo, nome, valor, ingredientes, categoria, data, foto, tamanhos) VALUES ('$maximo', '$nome', '$valor', '$ingrediente', '$categoria', '".date('d/m/Y')."', '$foto', '0')");
+$logface  = mysqli_query($db,"INSERT INTO produtos (maximo, nome, valor, ingredientes, categoria, data, foto, tamanhos) VALUES ('$maximo', '$nome', '$valor', '$ingrediente', '$categoria', '".date('d/m/Y')."', '$foto', '0')");
 
 }	
 

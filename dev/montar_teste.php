@@ -2,8 +2,8 @@
 session_start();
 include('bd.php');
 
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 $classe  = 'addcarrinho';
 $classe2 = 'box63 maispizza';
@@ -13,8 +13,8 @@ $classe2 = 'box63a naomaispizza';
 }
 ?>
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 ?>
 <!DOCTYPE html>
 <html >
@@ -111,7 +111,7 @@ span {
  <div class="clear"></div>
  <ul class="items">
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <li class="<?php echo $classe ?> add-to-cart" id="addcarrinho-<?php echo $produtos['id'] ?>" data-nome="<?php echo $produtos['nome'] ?>" data-valor="<?php echo $produtos['valor'] ?>" data-id="<?php echo $produtos['id'] ?>" data-foto="<?php echo $produtos['foto'] ?>">
 <div class="box170">
       <div class="box29 item">

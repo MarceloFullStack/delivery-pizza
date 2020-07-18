@@ -14,8 +14,8 @@ function sendMsg($msg) {
 }
 
  
-  $chat = mysql_query("SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido");
-  $chats=mysql_num_rows($chat);
+  $chat = mysqli_query($db,"SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido");
+  $chats=mysqli_num_rows($chat);
   $html = $chats;
 
 sendMsg($html);

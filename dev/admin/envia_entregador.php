@@ -16,7 +16,7 @@ $telefone     = $_POST['telefone'];
 $foto         = $_POST['foto'];
 $endereco     = $_POST['endereco'];
 
-$logface  = mysql_query("INSERT INTO entregador (nome, telefone, foto, endereco) VALUES ('$nome', '$telefone', '$foto', '$endereco')");	 
+$logface  = mysqli_query($db,"INSERT INTO entregador (nome, telefone, foto, endereco) VALUES ('$nome', '$telefone', '$foto', '$endereco')");	 
 
 ?>
 </body>

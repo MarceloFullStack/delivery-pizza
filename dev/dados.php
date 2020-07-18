@@ -3,8 +3,8 @@ session_start();
 include('bd.php');
 if(!isset($_SESSION['id_usu_pizza'])) {  echo "<script>window.location='/montar'</script>"; }
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE id_u='".$_SESSION['id_usu_ario']."'");
-$usuario=mysql_fetch_assoc($usu);
+$usu=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$_SESSION['id_usu_ario']."'");
+$usuario=mysqli_fetch_assoc($usu);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -144,9 +144,9 @@ $("#cadastrar_update").click(function() {
     </script>
         
 <select name="cidade" id="cidade" onchange="getValor8(this.value, 0)">
-<?php $cid1=mysql_query("SELECT * FROM cidades WHERE cidade='".$usuario['cidade']."'"); $cidade1=mysql_fetch_assoc($cid1); ?>
+<?php $cid1=mysqli_query($db,"SELECT * FROM cidades WHERE cidade='".$usuario['cidade']."'"); $cidade1=mysqli_fetch_assoc($cid1); ?>
   <option value="<?php echo $cidade1['cidade'] ?>"><?php echo $cidade1['cidade'] ?></option>
-  <?php $cid=mysql_query("SELECT * FROM cidades"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+  <?php $cid=mysqli_query($db,"SELECT * FROM cidades"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
 </select>
@@ -177,7 +177,7 @@ $("#cadastrar_update").click(function() {
               <label>
               
 <select name="bairro" id="bairro">
-<?php $ba=mysql_query("SELECT * FROM bairros WHERE id='".$usuario['bairro']."'"); $bai=mysql_fetch_assoc($ba); ?>
+<?php $ba=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$usuario['bairro']."'"); $bai=mysqli_fetch_assoc($ba); ?>
   <option value="<?php echo $bai['id'] ?>"><?php echo $bai['nome'] ?></option>
 </select>
 

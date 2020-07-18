@@ -20,7 +20,7 @@ $id            = $_POST['id'];
 
 $ingrediente   = trim($ingredientes, ", ");
 
-$logface  = mysql_query("UPDATE produtos SET foto='$foto', sabor='$sabor', tamanho='$tamanho', valor='$valor', ingredientes='$ingrediente' WHERE id='$id'");
+$logface  = mysqli_query($db,"UPDATE produtos SET foto='$foto', sabor='$sabor', tamanho='$tamanho', valor='$valor', ingredientes='$ingrediente' WHERE id='$id'");
 	   
 
 ?>

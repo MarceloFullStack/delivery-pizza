@@ -16,7 +16,7 @@ $taxa     = $_POST['taxa'];
 $tempo    = $_POST['tempo'];
 $id       = $_POST['id'];
 
-$logface  = mysql_query("INSERT INTO bairros (tempo, nome, taxa, id_estrangeiro) VALUES ('$tempo', '$nome', '$taxa', '$id')");	 
+$logface  = mysqli_query($db,"INSERT INTO bairros (tempo, nome, taxa, id_estrangeiro) VALUES ('$tempo', '$nome', '$taxa', '$id')");	 
 
 ?>
 </body>

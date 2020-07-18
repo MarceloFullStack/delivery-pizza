@@ -130,7 +130,7 @@ function showFilled(Value)
     <div class="box_288">CPF<input type="text" placeholder="Digite seu cpf" name="textfield8" id="cpf" /></div>
     <div class="box_289">Cidade<select name="cidade" id="cidades">
   <option value="">Escolha uma Cidade</option>
-  <?php $cid=mysql_query("SELECT * FROM cidades"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+  <?php $cid=mysqli_query($db,"SELECT * FROM cidades"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
 </select></div>

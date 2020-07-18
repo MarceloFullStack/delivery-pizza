@@ -16,9 +16,9 @@ $email        = $_POST['lemail'];
 $senha        = $_POST['lsenha'];
 $redireciona  = $_POST['redireciona'];
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE email='$email' and senha='".md5($senha)."'");
-$usuario=mysql_fetch_assoc($usu);
-$num=mysql_num_rows($usu);
+$usu=mysqli_query($db,"SELECT * FROM usuarios WHERE email='$email' and senha='".md5($senha)."'");
+$usuario=mysqli_fetch_assoc($usu);
+$num=mysqli_num_rows($usu);
 
 if($email==''){
 echo "<div class='box145'>Favor inserir <strong>seu e-mail</strong></div>";
@@ -29,10 +29,10 @@ echo "<div class='box145'>Dados <strong>incorretos</strong></div>";
 }else{
 
 
-$pedi=mysql_query("SELECT * FROM store WHERE sessao='".session_id()."'");
-while($pedidos=mysql_fetch_assoc($pedi)){
+$pedi=mysqli_query($db,"SELECT * FROM store WHERE sessao='".session_id()."'");
+while($pedidos=mysqli_fetch_assoc($pedi)){
 
-$update=mysql_query("UPDATE store SET sessao='".$usuario['id_logado']."' WHERE id='".$pedidos['id']."'");
+$update=mysqli_query($db,"UPDATE store SET sessao='".$usuario['id_logado']."' WHERE id='".$pedidos['id']."'");
 
 }
 
@@ -40,8 +40,8 @@ $_SESSION['id_usu_pizza']    = $usuario['id_logado'];
 $_SESSION['id_usu_ario']     = $usuario['id_u'];
 $_SESSION['nome_usu_pizza']  = $usuario['nome'];
 
-$prod=mysql_query("SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
-$num_prod=mysql_num_rows($prod);
+$prod=mysqli_query($db,"SELECT * FROM store WHERE sessao='".$_SESSION['id_usu_pizza']."'");
+$num_prod=mysqli_num_rows($prod);
 
 if($num_prod>0){
 echo "<script>window.location='/finalizar'</script>";

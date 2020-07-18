@@ -5,8 +5,8 @@ include('bd.php');
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <?php
-$chat2   = mysql_query("SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido");
-$chats2  = mysql_num_rows($chat2);
+$chat2   = mysqli_query($db,"SELECT * FROM store_finalizado WHERE status_view='0' group by id_pedido");
+$chats2  = mysqli_num_rows($chat2);
 ?>      
 <script>
 $(document).ready(function() {

@@ -4,8 +4,8 @@ include('bd.php');
 include_once 'time_stamp.php';
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
-$usu=mysql_query("SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
-$usuario=mysql_fetch_assoc($usu);
+$usu=mysqli_query($db,"SELECT * FROM usuarios WHERE id_u='".$_GET['id']."'");
+$usuario=mysqli_fetch_assoc($usu);
 
 ?>  
 
@@ -136,9 +136,9 @@ function showFilled(Value)
     </script>
         
 <select name="cidade" id="cidade" onchange="getValor8(this.value, 0)">
-<?php $cid1=mysql_query("SELECT * FROM cidades WHERE cidade='".$usuario['cidade']."'"); $cidade1=mysql_fetch_assoc($cid1); ?>
+<?php $cid1=mysqli_query($db,"SELECT * FROM cidades WHERE cidade='".$usuario['cidade']."'"); $cidade1=mysqli_fetch_assoc($cid1); ?>
   <option value="<?php echo $cidade1['cidade'] ?>"><?php echo $cidade1['cidade'] ?></option>
-  <?php $cid=mysql_query("SELECT * FROM cidades"); while($cidade=mysql_fetch_assoc($cid)){ ?>
+  <?php $cid=mysqli_query($db,"SELECT * FROM cidades"); while($cidade=mysqli_fetch_assoc($cid)){ ?>
   <option value="<?php echo $cidade['cidade'] ?>"><?php echo $cidade['cidade'] ?></option>
   <?php } ?>
 </select>
@@ -169,7 +169,7 @@ function showFilled(Value)
               <label>
               
 <select name="bairro" id="bairro">
-<?php $ba=mysql_query("SELECT * FROM bairros WHERE id='".$usuario['bairro']."'"); $bai=mysql_fetch_assoc($ba); ?>
+<?php $ba=mysqli_query($db,"SELECT * FROM bairros WHERE id='".$usuario['bairro']."'"); $bai=mysqli_fetch_assoc($ba); ?>
   <option value="<?php echo $bai['id'] ?>"><?php echo $bai['nome'] ?></option>
 </select>
 

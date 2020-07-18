@@ -144,8 +144,8 @@ $("#enviar").click(function() {
         <div class="box_2colunas_fake">
         
         <?php
-		$ingred=mysql_query("SELECT * FROM ingredientes WHERE id='".$_GET['id']."'");
-		$categorias=mysql_fetch_assoc($ingred);
+		$ingred=mysqli_query($db,"SELECT * FROM ingredientes WHERE id='".$_GET['id']."'");
+		$categorias=mysqli_fetch_assoc($ingred);
 		?>
           <div class="box_row">
           

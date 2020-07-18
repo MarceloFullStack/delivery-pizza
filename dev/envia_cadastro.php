@@ -54,6 +54,8 @@ return trim(trim(trim(preg_replace('/-{2,}/s', '-', preg_replace($aaa, $bbb, str
 $rua = "".$endereco." ".$numero." ".$bairro." ".$cidade."";
 $address = seoUrl($rua);
 $geocode = file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
+var_dump($geocode);
+exit;
 $output= json_decode($geocode);
 $lat = $output->results[0]->geometry->location->lat;
 $long = $output->results[0]->geometry->location->lng;

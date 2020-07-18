@@ -15,7 +15,7 @@ $nome     = $_POST['categoria'];
 $taxa     = $_POST['taxa'];
 $id       = $_POST['id'];
 
-$logface  = mysql_query("UPDATE borda SET nome='$nome', taxa='$taxa' WHERE id='$id'");	 
+$logface  = mysqli_query($db,"UPDATE borda SET nome='$nome', taxa='$taxa' WHERE id='$id'");	 
 
 ?>
 </body>

@@ -56,8 +56,8 @@ $rc = false;
 while ($row = mysql_fetch_array($result)) {
 
 if($row['tamanhos']=='1'){
-$ta=mysql_query("SELECT * FROM tamanhos WHERE id_estrangeiro='".$row['id']."'");
-$tam=mysql_fetch_assoc($ta);
+$ta=mysqli_query($db,"SELECT * FROM tamanhos WHERE id_estrangeiro='".$row['id']."'");
+$tam=mysqli_fetch_assoc($ta);
 $valor = $tam['valor'];
 }else{
 $valor = $row['valor'];

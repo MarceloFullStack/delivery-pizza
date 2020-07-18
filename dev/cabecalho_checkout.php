@@ -5,8 +5,8 @@ $char = session_id();
 $char = $_SESSION['id_usu_pizza'];
 } ?>  
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 ?>
 
 <script>
@@ -50,8 +50,8 @@ $(document).ready(function() {
   <a href="/"><li>Inicio</li></a>
   
   <?php
-  $cat=mysql_query("SELECT * FROM categorias");
-  while($categ=mysql_fetch_assoc($cat)){
+  $cat=mysqli_query($db,"SELECT * FROM categorias");
+  while($categ=mysqli_fetch_assoc($cat)){
   ?>
   
   <?php if($categ['montar']=='1'){ ?>
@@ -135,8 +135,8 @@ $(document).ready(function() {
  <div class="box2022"><div class="box2036">
 <ul>
             <?php
-			$cat=mysql_query("SELECT * FROM categorias");
-			while($categ=mysql_fetch_assoc($cat)){
+			$cat=mysqli_query($db,"SELECT * FROM categorias");
+			while($categ=mysqli_fetch_assoc($cat)){
 			?>
             
                <?php if($categ['montar']=='1'){ ?>

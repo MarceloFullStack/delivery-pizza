@@ -1,13 +1,13 @@
 <?php
-$ta=mysql_query("SELECT * FROM tamanho");
-while($tam=mysql_fetch_assoc($ta)){
+$ta=mysqli_query($db,"SELECT * FROM tamanho");
+while($tam=mysqli_fetch_assoc($ta)){
 ?>
 
 <div class="box34" id="sabores<?php echo $tam['id'] ?>" style="display:none;">
   <div class="box35">Selecione um Sabor</div>
   <div class="box36"></div>
 <div class="box213">  
-<?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='pizzas' and tamanho='".$tam['tamanho']."'"); while($produtos=mysql_fetch_assoc($produto)){?>   
+<?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='pizzas' and tamanho='".$tam['tamanho']."'"); while($produtos=mysqli_fetch_assoc($produto)){?>   
  
   <div class="box37" data-idproduto="<?php echo $produtos['id'] ?>" data-sabor="<?php echo $produtos['sabor'] ?>" data-ingredientes="<?php echo $produtos['ingredientes'] ?>" data-valor="<?php echo $produtos['valor'] ?>">
     <div class="box38">

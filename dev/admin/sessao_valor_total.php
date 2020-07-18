@@ -5,8 +5,8 @@ session_start();
 include('bd.php');
 $char  = $_POST['id_usuario'];
 
-$result=mysql_query("SELECT SUM(valor) AS valor_opcionais FROM opcionais WHERE sessao_usuario='".$char."'");
-$row = mysql_fetch_assoc($result); 
+$result=mysqli_query($db,"SELECT SUM(valor) AS valor_opcionais FROM opcionais WHERE sessao_usuario='".$char."'");
+$row = mysqli_fetch_assoc($result); 
 
 $saldev[1] = (double) $_POST['valor1'];
 $saldev[2] = (double) $_POST['valor2'];

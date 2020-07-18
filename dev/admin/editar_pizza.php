@@ -5,8 +5,8 @@ include('bd.php');
 if(@intval($_SESSION['bt_admin_login']) <> '256841') {  echo "<script>window.location='/admin/login.php'</script>"; }
 
 
-		$prod=mysql_query("SELECT * FROM produtos WHERE id='".$_GET['id']."'");
-		$produto=mysql_fetch_assoc($prod);
+		$prod=mysqli_query($db,"SELECT * FROM produtos WHERE id='".$_GET['id']."'");
+		$produto=mysqli_fetch_assoc($prod);
 
         
         ?>  
@@ -146,7 +146,7 @@ $("#enviar").click(function() {
           <div class="box_201">Sabores</div>
           <select name="sabor" id="sabor" style="padding:15px; background-color:#FFFFFF; border: #B6B6B6 solid 1px; color:#666666; font-weight:bold; font-size: 14px; width: 250px;">
                   <option value="<?php echo $produto['sabor'] ?>"><?php echo $produto['sabor'] ?></option>
-                  <?php $cat=mysql_query("SELECT * FROM sabores WHERE sabor<>'".$produto['sabor']."'"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM sabores WHERE sabor<>'".$produto['sabor']."'"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['sabor'] ?>"><?php echo $categoria['sabor'] ?></option>
                   <?php } ?>
        
@@ -174,7 +174,7 @@ $('#tama').on('change', function() {
              <div class="box_201">Tamanho</div>
              <select name="tamanho" id="tamanho" style="padding:15px; background-color:#FFFFFF; border: #B6B6B6 solid 1px; color:#666666; font-weight:bold; font-size: 14px; width: 250px;">
                   <option value="<?php echo $produto['tamanho'] ?>"><?php echo $produto['tamanho'] ?></option>
-                  <?php $cat=mysql_query("SELECT * FROM tamanho WHERE tamanho<>'".$produto['tamanho']."'"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM tamanho WHERE tamanho<>'".$produto['tamanho']."'"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['tamanho'] ?>"><?php echo $categoria['tamanho'] ?></option>
                   <?php } ?>
               </select>
@@ -227,8 +227,8 @@ $idl = $idaluno[$i];
 <?php } ?>
 
 <?php
-$se=mysql_query("SELECT * FROM ingredientes");
-while($select=mysql_fetch_assoc($se)){
+$se=mysqli_query($db,"SELECT * FROM ingredientes");
+while($select=mysqli_fetch_assoc($se)){
 ?>
                   <option value="<?php echo $select['nome']; ?>"><?php echo $select['nome']; ?></option>
                   <?php } ?>

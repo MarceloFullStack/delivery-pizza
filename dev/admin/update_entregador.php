@@ -18,9 +18,9 @@ $endereco     = $_POST['endereco'];
 $id           = $_POST['id'];
 
 if($foto<>''){
-$logface  = mysql_query("UPDATE entregador SET nome='$nome', telefone='$telefone', foto='$foto', endereco='$endereco' WHERE id='$id'");	 
+$logface  = mysqli_query($db,"UPDATE entregador SET nome='$nome', telefone='$telefone', foto='$foto', endereco='$endereco' WHERE id='$id'");	 
 }else{
-$logface  = mysql_query("UPDATE entregador SET nome='$nome', telefone='$telefone', endereco='$endereco' WHERE id='$id'");
+$logface  = mysqli_query($db,"UPDATE entregador SET nome='$nome', telefone='$telefone', endereco='$endereco' WHERE id='$id'");
 }
 ?>
 </body>

@@ -27,7 +27,7 @@ $slug  = seoUrl($categoria);
 
 
 
-	  $logface  = mysql_query("UPDATE categorias SET escolha_ingredientes='$escolha_ingredientes', nome='$categoria', url='$slug', montar='$montar', ordem='$ordem', posicao='$posicao' WHERE id='$id'");
+	  $logface  = mysqli_query($db,"UPDATE categorias SET escolha_ingredientes='$escolha_ingredientes', nome='$categoria', url='$slug', montar='$montar', ordem='$ordem', posicao='$posicao' WHERE id='$id'");
 	   
 
 ?>

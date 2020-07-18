@@ -97,7 +97,7 @@ function showFilled(Value)
                       <tbody>
                       
                       <?php
-					  $dado=mysql_query("SELECT * FROM usuarios order by id_u"); while($dados=mysql_fetch_assoc($dado)){
+					  $dado=mysqli_query($db,"SELECT * FROM usuarios order by id_u"); while($dados=mysqli_fetch_assoc($dado)){
 					  ?>
                         <tr>
                           <td><input name="id[]" type="checkbox" class="flat cinput" value="<?php echo $dados['id_u'] ?>"></td>

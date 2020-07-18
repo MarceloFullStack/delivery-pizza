@@ -1,6 +1,6 @@
 <?php 
 include('bd.php');
-$produto=mysql_query("SELECT * FROM produtos WHERE sabor like '%".$_POST['valor']."%' and categoria='pizzas'"); while($produtos=mysql_fetch_assoc($produto)){?>
+$produto=mysqli_query($db,"SELECT * FROM produtos WHERE sabor like '%".$_POST['valor']."%' and categoria='pizzas'"); while($produtos=mysqli_fetch_assoc($produto)){?>
   <li>
    <div class="box_264">
      <div class="box_265">

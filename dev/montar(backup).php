@@ -2,8 +2,8 @@
 session_start();
 include('bd.php');
 
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 $classe  = 'addcarrinho';
 $classe2 = 'box63 maispizza';
@@ -13,8 +13,8 @@ $classe2 = 'box63a naomaispizza';
 }
 ?>
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -268,7 +268,7 @@ $config=mysql_fetch_assoc($conf);
     <small>Qtd. fatias</small></div>
     <div class="boxb">
     <ul>
-      <?php $tama=mysql_query("SELECT * FROM tamanho order by quant_sabores desc"); while($tamanho=mysql_fetch_assoc($tama)){ ?>         
+      <?php $tama=mysqli_query($db,"SELECT * FROM tamanho order by quant_sabores desc"); while($tamanho=mysqli_fetch_assoc($tama)){ ?>         
       <li data-tamanho="<?php echo $tamanho['tamanho'] ?>" data-tamanhoid="<?php echo $tamanho['id'] ?>" data-fatias="<?php echo $tamanho['fatias'] ?> fatias">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label><?php echo $tamanho['tamanho'] ?></label>
       <small><?php echo $tamanho['fatias'] ?> fatias</small></li>
@@ -301,7 +301,7 @@ $config=mysql_fetch_assoc($conf);
     <small>Sem borda recheada</small></div>
     <div class="boxc">
     <ul>
-      <?php $bord=mysql_query("SELECT * FROM borda"); while($borda=mysql_fetch_assoc($bord)){ ?>         
+      <?php $bord=mysqli_query($db,"SELECT * FROM borda"); while($borda=mysqli_fetch_assoc($bord)){ ?>         
       <li data-borda="<?php echo $borda['nome'] ?>" data-taxa="<?php echo $borda['taxa'] ?>">
       <img src="arquivos/mini_pizza.jpg" width="40" height="40" /><label>Borda Recheada</label>
       <small><?php echo $borda['nome'] ?> + R$ <?php echo $borda['taxa'] ?></small></li>
@@ -337,7 +337,7 @@ $config=mysql_fetch_assoc($conf);
     </div>
     <div class="box77"><ul>
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='bebidas'"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <li class="<?php echo $classe ?>" id="addcarrinho-<?php echo $produtos['id'] ?>" data-nome="<?php echo $produtos['nome'] ?>" data-valor="<?php echo $produtos['valor'] ?>" data-id="<?php echo $produtos['id'] ?>" data-foto="<?php echo $produtos['foto'] ?>">
 <div class="box170">
       <div class="box29">

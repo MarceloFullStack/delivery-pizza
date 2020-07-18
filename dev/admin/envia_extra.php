@@ -3,6 +3,6 @@ include('bd.php');
 
 $nome     = $_POST['categoria'];
 
-$logface  = mysql_query("INSERT INTO extras (nome) VALUES ('$nome')");	 
+$logface  = mysqli_query($db,"INSERT INTO extras (nome) VALUES ('$nome')");	 
 
 ?>

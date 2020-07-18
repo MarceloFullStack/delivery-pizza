@@ -5,8 +5,8 @@ include('bd.php');
 $url= isset($_GET['url']) ? $_GET['url'] : '';
 $explode = explode('/', $url);
 
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 $classe  = 'addcarrinho';
 $classe2 = 'add-lanche';
@@ -69,11 +69,11 @@ $classe2 = 'naoadd-lanche';
     <div class="box77">
     <ul>
     
-    <?php $produto=mysql_query("SELECT * FROM produtos WHERE categoria='".$explode[1]."' order by rand()"); while($produtos=mysql_fetch_assoc($produto)){?>
+    <?php $produto=mysqli_query($db,"SELECT * FROM produtos WHERE categoria='".$explode[1]."' order by rand()"); while($produtos=mysqli_fetch_assoc($produto)){?>
 <?php
 if($produtos['categoria']<>'bebidas'){
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 ?>   
 <a href="/montar/<?php echo $explode[1] ?>">
@@ -101,8 +101,8 @@ if($config['aberto']=='1'){
 
 
 <?php
-$conf=mysql_query("SELECT * FROM config");
-$config=mysql_fetch_assoc($conf);
+$conf=mysqli_query($db,"SELECT * FROM config");
+$config=mysqli_fetch_assoc($conf);
 if($config['aberto']=='1'){
 ?> 
 </a>

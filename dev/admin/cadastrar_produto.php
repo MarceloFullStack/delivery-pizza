@@ -247,13 +247,13 @@ $('#categoria').on('change', function() {
 </script>
 <select name="categoria" id="categoria" style="padding:15px; background-color:#FFFFFF; border: #B6B6B6 solid 1px; color:#666666; font-weight:bold; font-size: 14px; width: 300px;">
                   <option value="">Escolha uma Categoria</option>
-                  <?php $cat=mysql_query("SELECT * FROM categorias"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM categorias"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['url'] ?>"><?php echo $categoria['nome'] ?></option>
                   <?php } ?>
 </select>  </td>
                 <td valign="bottom"><select name="tamanho" id="tamanho" style="padding:15px; display:none; background-color:#FFFFFF; border: #B6B6B6 solid 1px; color:#666666; font-weight:bold; font-size: 14px; width: 200px;">
                   <option value="">Escolha um Tamanho</option>
-                  <?php $cat=mysql_query("SELECT * FROM tamanho"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM tamanho"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['tamanho'] ?>"><?php echo $categoria['tamanho'] ?></option>
                   <?php } ?>
                 </select></td>
@@ -273,7 +273,7 @@ $('#categoria').on('change', function() {
 <select name="sabor" id="sabor" style="padding:15px; background-color:#FFFFFF; display:none; border: #B6B6B6 solid 1px; color:#666666; font-weight:bold; font-size: 14px; width: 200px;">
                   <option value="">Escolha um Sabor</option>
                   
-                  <?php $cat=mysql_query("SELECT * FROM sabores"); while($categoria=mysql_fetch_assoc($cat)){?>
+                  <?php $cat=mysqli_query($db,"SELECT * FROM sabores"); while($categoria=mysqli_fetch_assoc($cat)){?>
                   <option value="<?php echo $categoria['sabor'] ?>"><?php echo $categoria['sabor'] ?></option>
                   <?php } ?>
        
@@ -295,8 +295,8 @@ $('#categoria').on('change', function() {
                 
 <select style="width:750px" name="categoria" multiple class="chosen-select-no-results" id="categoria"tabindex="11" data-placeholder="Selecione os ingredientes">
 <?php
-$se=mysql_query("SELECT * FROM ingredientes");
-while($select=mysql_fetch_assoc($se)){
+$se=mysqli_query($db,"SELECT * FROM ingredientes");
+while($select=mysqli_fetch_assoc($se)){
 ?>
                     <option value="<?php echo $select['nome']; ?>"><?php echo $select['nome']; ?></option>
                     <?php } ?>

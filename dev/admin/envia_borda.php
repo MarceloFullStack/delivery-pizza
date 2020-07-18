@@ -14,7 +14,7 @@ include('bd.php');
 $nome     = $_POST['categoria'];
 $taxa     = $_POST['taxa'];
 
-$logface  = mysql_query("INSERT INTO borda (nome, taxa) VALUES ('$nome', '$taxa')");	 
+$logface  = mysqli_query($db,"INSERT INTO borda (nome, taxa) VALUES ('$nome', '$taxa')");	 
 
 ?>
 </body>

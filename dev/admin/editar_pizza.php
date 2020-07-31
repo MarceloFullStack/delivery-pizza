@@ -214,7 +214,7 @@ $('#tama').on('change', function() {
          <div class="box_199">
            <div class="box_204">
              <div class="box_201">Ingredientes</div>
-             <select style="" name="ingredientes" multiple class="chosen-select-no-results" id="ingredientes"tabindex="11" data-placeholder="Selecione os ingredientes">
+             <select  name="ingredientes" multiple class="chosen-select-no-results" id="ingredientes"tabindex="11" data-placeholder="Selecione os ingredientes">
 
 <?php
 $idaluno = explode(",", $produto['ingredientes']);

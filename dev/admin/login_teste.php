@@ -11,7 +11,8 @@ $config=mysqli_fetch_assoc($conf);
 <title>Login</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
-<script type="text/javascript"> <!-- javascript envia dados  -->
+<!-- javascript envia dados  -->
+<script type="text/javascript"> 
 $(document).ready(function() {
   $('body').on('click', '#abrir_plano1', function(){
     $('.plano1').attr('id','pagamento');
@@ -46,8 +47,10 @@ $(document).ready(function() {
     $('#plano3').show();
   });
 });	
+
 </script> 
-<script type="text/javascript"> <!-- javascript envia dados  -->
+<!-- javascript envia dados  -->
+<script type="text/javascript"> 
 		$(function($) {
 		$("#formulario").submit(function() {
 		
